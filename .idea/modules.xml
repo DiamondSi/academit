@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Vector/Vector.iml" filepath="$PROJECT_DIR$/Vector/Vector.iml" />
       <module fileurl="file://$PROJECT_DIR$/academit.iml" filepath="$PROJECT_DIR$/academit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/range/range.iml" filepath="$PROJECT_DIR$/range/range.iml" />
     </modules>
   </component>
 </project>
