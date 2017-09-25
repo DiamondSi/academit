@@ -32,4 +32,8 @@ public class Range {
     public boolean isInside(double point) {
         return point >= from && point <= to;
     }
+
+    public Range intersection(Range r1, Range r2) {
+        return null;
+    }
 }

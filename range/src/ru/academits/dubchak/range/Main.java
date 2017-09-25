@@ -9,5 +9,7 @@ public class Main {
         range.setTo(30);
         System.out.println(range.getLength());
         System.out.println(range.isInside(30));
+        Range range1 = new Range(10,20);
+        Range range2 = new Range(5,30);
     }
 }
