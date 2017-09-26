@@ -33,7 +33,20 @@ public class Range {
         return point >= from && point <= to;
     }
 
-    public Range intersection(Range r1, Range r2) {
-        return null;
+    public Range getIntersection(Range range) {
+        double intersectionFrom = Math.max(this.getFrom(), range.getFrom());
+        double intersectionTo = Math.min(this.getTo(), range.getTo());
+        double intersectionLength = intersectionTo - intersectionFrom;
+        if (intersectionLength < 0) {
+            return null;
+        } else return new Range(intersectionFrom, intersectionTo);
+    }
+
+    public Range[] getDisjunction(Range range) {
+        double disjunctionFrom = Math.min(this.getFrom(), range.getFrom());
+        double disjunctionTo = Math.max(this.getTo(), range.getTo());
+        if (this.getIntersection(range) != null) {
+            return new Range[]{new Range(disjunctionFrom, disjunctionTo)};
+        } else return new Range[]{new Range(this.getFrom(), getTo()), new Range(range.getFrom(), range.getTo())};
     }
 }
