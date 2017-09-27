@@ -13,13 +13,18 @@ public class Main {
         System.out.println(range.isInside(30));
         Range range1 = new Range(5, 30);
         System.out.println("range1: " + range1.getFrom() + ", " + range1.getTo());
-        Range range2 = new Range(10, 50);
+        Range range2 = new Range(45, 50);
         System.out.println("range2: " + range2.getFrom() + ", " + range2.getTo());
         if (range1.getIntersection(range2) != null) {
             Range intersection = range1.getIntersection(range2);
-            System.out.println("Intersection is: " + intersection.getFrom() + ", " + intersection.getTo());
+            System.out.printf("Intersection is: %f %f%n", intersection.getFrom(), intersection.getTo());
+        } else{
+            System.out.println("Intersection is: null");
         }
-        Range[] disjunction = range1.getDisjunction(range2);
-        System.out.println(disjunction);
+        Range[] union = range1.getUnion(range2);
+        System.out.println("Union is:");
+        for (Range r : union) {
+            System.out.printf("%f %f%n", r.getFrom(), r.getTo());
+        }
     }
 }

@@ -34,19 +34,37 @@ public class Range {
     }
 
     public Range getIntersection(Range range) {
-        double intersectionFrom = Math.max(this.getFrom(), range.getFrom());
-        double intersectionTo = Math.min(this.getTo(), range.getTo());
+        double intersectionFrom = Math.max(getFrom(), range.getFrom());
+        double intersectionTo = Math.min(getTo(), range.getTo());
         double intersectionLength = intersectionTo - intersectionFrom;
         if (intersectionLength < 0) {
             return null;
-        } else return new Range(intersectionFrom, intersectionTo);
+        } else {
+            return new Range(intersectionFrom, intersectionTo);
+        }
     }
 
-    public Range[] getDisjunction(Range range) {
-        double disjunctionFrom = Math.min(this.getFrom(), range.getFrom());
-        double disjunctionTo = Math.max(this.getTo(), range.getTo());
-        if (this.getIntersection(range) != null) {
-            return new Range[]{new Range(disjunctionFrom, disjunctionTo)};
-        } else return new Range[]{new Range(this.getFrom(), getTo()), new Range(range.getFrom(), range.getTo())};
+    public Range[] getUnion(Range range) {
+        if (getIntersection(range) != null) {
+            return new Range[]{new Range(Math.min(getFrom(), range.getFrom()), Math.max(getTo(), range.getTo()))};
+        } else {
+            return new Range[]{new Range(getFrom(), getTo()), new Range(range.getFrom(), range.getTo())};
+        }
+    }
+
+    public Range[] getDifference(Range range) {
+        Range intersection = this.getIntersection(range);
+
+        if (intersection == null) {
+            return new Range[]{new Range(getFrom(), getTo())};
+        } else if (getLength() > range.getLength()){
+            return new Range[]{new Range(Math.min(getFrom(), range.getFrom()), Math.max(getTo(), range.getTo()))};
+        }
+
+
+            if (getTo() < range.getTo() && getTo() < range.getTo()) {
+                return new Range[]{new Range(getFrom(), Math.min(getTo(), range.getFrom()))};
+            } else if (getFrom() < range.getTo() && getTo() > range.getTo())
+                return new Range[]{};
     }
 }
