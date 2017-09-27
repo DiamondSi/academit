@@ -57,10 +57,10 @@ public class Range {
 
         if (intersection == null) {
             return new Range[]{new Range(getFrom(), getTo())};
-        } else if (getLength() > range.getLength()){
-            return new Range[]{new Range(Math.min(getFrom(), range.getFrom()), Math.max(getTo(), range.getTo()))};
-        }
-
+        } else if (range.getLength() >= getLength()) {
+            return new Range[]{};
+        } else
+//        return new Range[]{new Range(Math.min(getFrom(), range.getFrom()), Math.max(getTo(), range.getTo()))};
 
             if (getTo() < range.getTo() && getTo() < range.getTo()) {
                 return new Range[]{new Range(getFrom(), Math.min(getTo(), range.getFrom()))};
