@@ -34,8 +34,8 @@ public class Range {
     }
 
     public Range getIntersection(Range range) {
-        double intersectionFrom = Math.max(getFrom(), range.getFrom());
-        double intersectionTo = Math.min(getTo(), range.getTo());
+        double intersectionFrom = Math.max(from, range.from);
+        double intersectionTo = Math.min(to, range.to);
         double intersectionLength = intersectionTo - intersectionFrom;
         if (intersectionLength < 0) {
             return null;
@@ -46,25 +46,21 @@ public class Range {
 
     public Range[] getUnion(Range range) {
         if (getIntersection(range) != null) {
-            return new Range[]{new Range(Math.min(getFrom(), range.getFrom()), Math.max(getTo(), range.getTo()))};
+            return new Range[]{new Range(Math.min(from, range.from), Math.max(to, range.to))};
         } else {
-            return new Range[]{new Range(getFrom(), getTo()), new Range(range.getFrom(), range.getTo())};
+            return new Range[]{new Range(from, to), new Range(range.from, range.to)};
         }
     }
 
     public Range[] getDifference(Range range) {
-        Range intersection = this.getIntersection(range);
-
-        if (intersection == null) {
-            return new Range[]{new Range(getFrom(), getTo())};
-        } else if (range.getLength() >= getLength()) {
+        if (from < range.from && to < range.to) {
+            return new Range[]{new Range(from, Math.min(to, range.from))};
+        } else if (from > range.from && to > range.to) {
+            return new Range[]{new Range(Math.max(from, range.to), to)};
+        } else if (from < range.from && to > range.to) {
+            return new Range[]{new Range(from, range.from), new Range(range.to, to)};
+        } else {
             return new Range[]{};
-        } else
-//        return new Range[]{new Range(Math.min(getFrom(), range.getFrom()), Math.max(getTo(), range.getTo()))};
-
-            if (getTo() < range.getTo() && getTo() < range.getTo()) {
-                return new Range[]{new Range(getFrom(), Math.min(getTo(), range.getFrom()))};
-            } else if (getFrom() < range.getTo() && getTo() > range.getTo())
-                return new Range[]{};
+        }
     }
 }
