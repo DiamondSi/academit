@@ -13,7 +13,7 @@ public class Main {
         System.out.println(range.isInside(30));
         Range range1 = new Range(5, 30);
         System.out.println("range1: " + range1.getFrom() + ", " + range1.getTo());
-        Range range2 = new Range(45, 50);
+        Range range2 = new Range(25, 50);
         System.out.println("range2: " + range2.getFrom() + ", " + range2.getTo());
 
         if (range1.getIntersection(range2) != null) {
@@ -29,7 +29,7 @@ public class Main {
             System.out.printf("%f %f%n", r.getFrom(), r.getTo());
         }
 
-        Range[] difference = range.getDifference(range2);
+        Range[] difference = range1.getDifference(range2);
         System.out.println("Difference is:");
         for (Range r : difference) {
             System.out.printf("%f %f%n", r.getFrom(), r.getTo());
