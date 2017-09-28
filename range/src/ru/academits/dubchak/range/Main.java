@@ -15,7 +15,7 @@ public class Main {
 
         Range range1 = new Range(5, 30);
         System.out.printf("range [%f .. %f] length:%f%n", range1.getFrom(), range1.getTo(), range1.getLength());
-        Range range2 = new Range(20, 25);
+        Range range2 = new Range(5, 10);
         System.out.printf("range [%f .. %f] length:%f%n", range2.getFrom(), range2.getTo(), range2.getLength());
 
         if (range1.getIntersection(range2) != null) {
