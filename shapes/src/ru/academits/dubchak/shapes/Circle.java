@@ -1,3 +1,5 @@
+package ru.academits.dubchak.shapes;
+
 public class Circle implements Shape {
     private double radius;
 
@@ -27,9 +29,7 @@ public class Circle implements Shape {
 
     @Override
     public String toString() {
-        return "Circle{" +
-                "radius=" + radius +
-                '}';
+        return String.format("Circle[radius=%f]", radius);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class Circle implements Shape {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Circle)) return false;
+        if (!(getClass()==o.getClass())) return false;
         Circle circle = (Circle) o;
         return Double.compare(circle.radius, radius) == 0;
     }

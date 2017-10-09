@@ -1,10 +1,12 @@
-public class Rectangle implements Shape {
-    double width;
-    double hight;
+package ru.academits.dubchak.shapes;
 
-    public Rectangle(double width, double hight) {
+public class Rectangle implements Shape {
+    private double width;
+    private double height;
+
+    public Rectangle(double width, double height) {
         this.width = width;
-        this.hight = hight;
+        this.height = height;
     }
 
     @Override
@@ -15,34 +17,31 @@ public class Rectangle implements Shape {
 
     @Override
     public double getHeight() {
-        return hight;
+        return height;
     }
 
     @Override
     public double getArea() {
-        return width * hight;
+        return width * height;
     }
 
     @Override
     public double getPerimeter() {
-        return width + width + hight + hight;
+        return width + width + height + height;
     }
 
     @Override
     public String toString() {
-        return "Rectangle{" +
-                "width=" + width +
-                ", hight=" + hight +
-                '}';
+        return String.format("Rectangle[width=%f; height=%f]", width, height);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Rectangle)) return false;
+        if (!(getClass()==o.getClass())) return false;
         Rectangle rectangle = (Rectangle) o;
         if (Double.compare(rectangle.getWidth(), getWidth()) != 0) return false;
-        return Double.compare(rectangle.hight, hight) == 0;
+        return Double.compare(rectangle.height, height) == 0;
     }
 
     @Override
@@ -51,7 +50,7 @@ public class Rectangle implements Shape {
         long temp;
         temp = Double.doubleToLongBits(getWidth());
         result = (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(hight);
+        temp = Double.doubleToLongBits(height);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }

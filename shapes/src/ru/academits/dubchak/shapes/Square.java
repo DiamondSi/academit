@@ -1,6 +1,8 @@
-public class Square implements Shape {
+package ru.academits.dubchak.shapes;
 
+import java.util.Comparator;
 
+public class Square implements Shape, Comparable {
     private double side;
 
     public Square(double side) {
@@ -30,9 +32,7 @@ public class Square implements Shape {
 
     @Override
     public String toString() {
-        return "Square{" +
-                "side=" + side +
-                '}';
+        return String.format("Square[side=%f]",side);
     }
 
     @Override
@@ -44,8 +44,15 @@ public class Square implements Shape {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Square)) return false;
+        if (!(getClass()==o.getClass())){
+            return false;
+        }
         Square square = (Square) o;
         return Double.compare(square.side, side) == 0;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }
