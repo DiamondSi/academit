@@ -2,7 +2,7 @@ package ru.academits.dubchak.shapes;
 
 import java.util.Comparator;
 
-public class Square implements Shape, Comparable {
+public class Square implements Shape {
     private double side;
 
     public Square(double side) {
@@ -32,27 +32,24 @@ public class Square implements Shape, Comparable {
 
     @Override
     public String toString() {
-        return String.format("Square[side=%f]",side);
+        return String.format("Square[side=%f]", side);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Square square = (Square) obj;
+        return Double.compare(square.side, side) == 0;
     }
 
     @Override
     public int hashCode() {
         long temp = Double.doubleToLongBits(side);
         return (int) (temp ^ (temp >>> 32));
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(getClass()==o.getClass())){
-            return false;
-        }
-        Square square = (Square) o;
-        return Double.compare(square.side, side) == 0;
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        return 0;
     }
 }

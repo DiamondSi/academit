@@ -38,10 +38,9 @@ public class Rectangle implements Shape {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(getClass()==o.getClass())) return false;
+        if (!(getClass() == o.getClass())) return false;
         Rectangle rectangle = (Rectangle) o;
-        if (Double.compare(rectangle.getWidth(), getWidth()) != 0) return false;
-        return Double.compare(rectangle.height, height) == 0;
+        return Double.compare(rectangle.getWidth(), getWidth()) == 0 && Double.compare(rectangle.height, height) == 0;
     }
 
     @Override

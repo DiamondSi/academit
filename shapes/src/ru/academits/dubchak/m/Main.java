@@ -23,20 +23,24 @@ public class Main {
             System.out.println(shape.getArea());
         }
         Arrays.sort(shapes, new ShapeAreaComparator());
-        System.out.println();
-        for (Shape shape : shapes) {
-            System.out.print(shape);
-            System.out.print(shape.getPerimeter());
-            System.out.print(" ");
-            System.out.println(shape.getArea());
-        }
+//        System.out.println();
+//        for (Shape shape : shapes) {
+//            System.out.print(shape);
+//            System.out.print(shape.getPerimeter());
+//            System.out.print(" ");
+//            System.out.println(shape.getArea());
+//        }
+        System.out.print(shapes[shapes.length-1]);
+        System.out.println(shapes[shapes.length-1].getArea());
         Arrays.sort(shapes, new ShapePerimeterComparator());
-        System.out.println();
-        for (Shape shape : shapes) {
-            System.out.print(shape);
-            System.out.print(shape.getPerimeter());
-            System.out.print(" ");
-            System.out.println(shape.getArea());
-        }
+        System.out.print(shapes[shapes.length-2]);
+        System.out.println(shapes[shapes.length-2].getPerimeter());
+//        System.out.println();
+//        for (Shape shape : shapes) {
+//            System.out.print(shape);
+//            System.out.print(shape.getPerimeter());
+//            System.out.print(" ");
+//            System.out.println(shape.getArea());
+//        }
     }
 }
