@@ -10,37 +10,23 @@ public class Main {
                 new Square(0.5),
                 new Triangle(1, 1, 2, 5, 3, 4),
                 new Rectangle(2, 10),
-                new Circle(3),
+                new Circle(30),
                 new Square(32),
                 new Triangle(0, 0, 1, 5, 3, 4),
                 new Rectangle(4, 8),
                 new Circle(1)
         };
-        for (Shape shape : shapes) {
-            System.out.print(shape);
-            System.out.print(shape.getPerimeter());
-            System.out.print(" ");
-            System.out.println(shape.getArea());
-        }
+        getMaxAreaShape(shapes);
+        getMaxPerimeterShape(shapes);
+    }
+
+    private static void getMaxAreaShape(Shape shapes[]) {
         Arrays.sort(shapes, new ShapeAreaComparator());
-//        System.out.println();
-//        for (Shape shape : shapes) {
-//            System.out.print(shape);
-//            System.out.print(shape.getPerimeter());
-//            System.out.print(" ");
-//            System.out.println(shape.getArea());
-//        }
-        System.out.print(shapes[shapes.length-1]);
-        System.out.println(shapes[shapes.length-1].getArea());
+        System.out.printf("Max area shape is %s Area is %f%n", shapes[shapes.length - 1].toString(), shapes[shapes.length - 1].getArea());
+    }
+
+    private static void getMaxPerimeterShape(Shape shapes[]) {
         Arrays.sort(shapes, new ShapePerimeterComparator());
-        System.out.print(shapes[shapes.length-2]);
-        System.out.println(shapes[shapes.length-2].getPerimeter());
-//        System.out.println();
-//        for (Shape shape : shapes) {
-//            System.out.print(shape);
-//            System.out.print(shape.getPerimeter());
-//            System.out.print(" ");
-//            System.out.println(shape.getArea());
-//        }
+        System.out.printf("Second perimeter shape is %s Perimeter is %f%n", shapes[shapes.length - 2].toString(), shapes[shapes.length - 2].getPerimeter());
     }
 }
