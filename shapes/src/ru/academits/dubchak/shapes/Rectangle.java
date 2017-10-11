@@ -37,20 +37,18 @@ public class Rectangle implements Shape {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(getClass() == o.getClass())) return false;
+        if (o == this) return true;
+        if (o == null || o.getClass() != this.getClass()) return false;
         Rectangle rectangle = (Rectangle) o;
         return Double.compare(rectangle.getWidth(), getWidth()) == 0 && Double.compare(rectangle.height, height) == 0;
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        temp = Double.doubleToLongBits(getWidth());
-        result = (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(height);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
+        final int PRIME = 37;
+        int hash = 1;
+        hash = PRIME * hash + (int) height;
+        hash = PRIME * hash + (int) width;
+        return hash;
     }
 }

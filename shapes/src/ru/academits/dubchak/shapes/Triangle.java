@@ -50,34 +50,28 @@ public class Triangle implements Shape {
     }
 
     @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        temp = Double.doubleToLongBits(x1);
-        result = (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(y1);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(x2);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(y2);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(x3);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(y3);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (o == null || o.getClass() != this.getClass()) return false;
+        Triangle triangle = (Triangle) o;
+        return Double.compare(triangle.x1, x1) == 0 &&
+                Double.compare(triangle.y1, y1) == 0 &&
+                Double.compare(triangle.x2, x2) == 0 &&
+                Double.compare(triangle.y2, y2) == 0 &&
+                Double.compare(triangle.x3, x3) == 0 &&
+                Double.compare(triangle.y3, y3) == 0;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(getClass() == o.getClass())) return false;
-        Triangle triangle = (Triangle) o;
-        if (Double.compare(triangle.x1, x1) != 0) return false;
-        if (Double.compare(triangle.y1, y1) != 0) return false;
-        if (Double.compare(triangle.x2, x2) != 0) return false;
-        if (Double.compare(triangle.y2, y2) != 0) return false;
-        if (Double.compare(triangle.x3, x3) != 0) return false;
-        return Double.compare(triangle.y3, y3) == 0;
+    public int hashCode() {
+        final int PRIME = 37;
+        int hash = 1;
+        hash = PRIME * hash + (int) x1;
+        hash = PRIME * hash + (int) x2;
+        hash = PRIME * hash + (int) x3;
+        hash = PRIME * hash + (int) y1;
+        hash = PRIME * hash + (int) y2;
+        hash = PRIME * hash + (int) y3;
+        return hash;
     }
 }

@@ -36,20 +36,18 @@ public class Square implements Shape {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        Square square = (Square) obj;
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (o == null || o.getClass() != this.getClass()) return false;
+        Square square = (Square) o;
         return Double.compare(square.side, side) == 0;
     }
 
     @Override
     public int hashCode() {
-        long temp = Double.doubleToLongBits(side);
-        return (int) (temp ^ (temp >>> 32));
+        final int PRIME = 37;
+        int hash = 1;
+        hash = PRIME * hash + (int) side;
+        return hash;
     }
 }
