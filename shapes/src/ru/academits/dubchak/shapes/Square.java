@@ -1,7 +1,5 @@
 package ru.academits.dubchak.shapes;
 
-import java.util.Comparator;
-
 public class Square implements Shape {
     private double side;
 
@@ -37,10 +35,14 @@ public class Square implements Shape {
 
     @Override
     public boolean equals(Object o) {
-        if (o == this) return true;
-        if (o == null || o.getClass() != this.getClass()) return false;
+        if (o == this) {
+            return true;
+        }
+        if (o == null || o.getClass() != this.getClass()) {
+            return false;
+        }
         Square square = (Square) o;
-        return Double.compare(square.side, side) == 0;
+        return square.side == side;
     }
 
     @Override

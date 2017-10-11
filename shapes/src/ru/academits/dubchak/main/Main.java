@@ -1,4 +1,4 @@
-package ru.academits.dubchak.m;
+package ru.academits.dubchak.main;
 
 import ru.academits.dubchak.shapes.*;
 
@@ -16,17 +16,17 @@ public class Main {
                 new Rectangle(4, 8),
                 new Circle(1)
         };
-        getMaxAreaShape(shapes);
-        getMaxPerimeterShape(shapes);
+        System.out.println(getMaxAreaShape(shapes));
+        System.out.println(getSecondMaxPerimeterShape(shapes));
     }
 
-    private static void getMaxAreaShape(Shape shapes[]) {
+    private static Shape getMaxAreaShape(Shape shapes[]) {
         Arrays.sort(shapes, new ShapeAreaComparator());
-        System.out.printf("Max area shape is %s Area is %f%n", shapes[shapes.length - 1].toString(), shapes[shapes.length - 1].getArea());
+        return shapes[shapes.length - 1];
     }
 
-    private static void getMaxPerimeterShape(Shape shapes[]) {
+    private static Shape getSecondMaxPerimeterShape(Shape shapes[]) {
         Arrays.sort(shapes, new ShapePerimeterComparator());
-        System.out.printf("Second perimeter shape is %s Perimeter is %f%n", shapes[shapes.length - 2].toString(), shapes[shapes.length - 2].getPerimeter());
+        return shapes[shapes.length - 2];
     }
 }

@@ -1,4 +1,6 @@
-package ru.academits.dubchak.shapes;
+package ru.academits.dubchak.main;
+
+import ru.academits.dubchak.shapes.Shape;
 
 import java.util.Comparator;
 
@@ -10,6 +12,8 @@ public class ShapeAreaComparator implements Comparator<Shape> {
         }
         if (shape.getArea() < t1.getArea()) {
             return -1;
-        } else return 0;
+        } else {
+            return 0;
+        }
     }
 }

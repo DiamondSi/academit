@@ -27,7 +27,7 @@ public class Triangle implements Shape {
         return Math.max(Math.max(y1, y2), y3) - Math.min(Math.min(y1, y2), y3);
     }
 
-    private double getSideLength(double x1, double y1, double x2, double y2) {
+    private static double getSideLength(double x1, double y1, double x2, double y2) {
         return Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
     }
 
@@ -51,15 +51,16 @@ public class Triangle implements Shape {
 
     @Override
     public boolean equals(Object o) {
-        if (o == this) return true;
-        if (o == null || o.getClass() != this.getClass()) return false;
+        if (o == this) {
+            return true;
+        }
+        if (o == null || o.getClass() != this.getClass()) {
+            return false;
+        }
         Triangle triangle = (Triangle) o;
-        return Double.compare(triangle.x1, x1) == 0 &&
-                Double.compare(triangle.y1, y1) == 0 &&
-                Double.compare(triangle.x2, x2) == 0 &&
-                Double.compare(triangle.y2, y2) == 0 &&
-                Double.compare(triangle.x3, x3) == 0 &&
-                Double.compare(triangle.y3, y3) == 0;
+        return triangle.x1 == x1 && triangle.y1 == y1 &&
+                triangle.x2 == x2 && triangle.y2 == y2 &&
+                triangle.x3 == x3 && triangle.y3 == y3;
     }
 
     @Override
