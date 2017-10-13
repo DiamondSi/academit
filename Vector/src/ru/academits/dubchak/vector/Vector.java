@@ -18,4 +18,17 @@ public class Vector {
     public Vector(double[] vector) {
         this.vector = vector;
     }
+    public Vector(int n, double[] vector){
+        for (int i = 0; i < vector.length; i++) {
+            this.vector[i] = vector[i];
+        }
+        if (vector.length<n){
+            for (int i = vector.length; i < n; i++) {
+                this.vector[i] = 0;
+            }
+        }
+    }
+    public int getSize(){
+        return vector.length;
+    }
 }
