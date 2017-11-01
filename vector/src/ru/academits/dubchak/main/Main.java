@@ -1,10 +1,6 @@
 package ru.academits.dubchak.main;
 
-import ru.academits.dubchak.vector.*;
-
-import static ru.academits.dubchak.vector.Vector.getSubVector;
-import static ru.academits.dubchak.vector.Vector.getSumVector;
-import static ru.academits.dubchak.vector.Vector.multiplicateVector;
+import ru.academits.dubchak.vector.Vector;
 
 public class Main {
     public static void main(String[] args) {
@@ -47,15 +43,15 @@ public class Main {
         Vector vector6 = new Vector(array3);
         System.out.printf("vector5 %s equals to vector6 %s: %s%n%n", vector5, vector6, vector5.equals(vector6));
 
-        System.out.printf("Sum vector5 %s vector6 %s: %s%n%n", vector5, vector6, getSumVector(vector5, vector6));
+        System.out.printf("Sum vector5 %s vector6 %s: %s%n%n", vector5, vector6, Vector.getSumVector(vector5, vector6));
 
-        System.out.printf("Subtraction vector5 %s vector6 %s: %s%n%n", vector5, vector6, getSubVector(vector5, vector6));
+        System.out.printf("Subtraction vector5 %s vector6 %s: %s%n%n", vector5, vector6, Vector.getSubVector(vector5, vector6));
 
 
         double[] array4 = {1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 1, 1, 1};
         double[] array5 = {2, 1};
         Vector vector7 = new Vector(array4);
         Vector vector8 = new Vector(array5);
-        System.out.printf("Scalar multiplication vector6 %s vector7 %s: %s%n%n", vector7, vector8, multiplicateVector(vector7, vector8));
+        System.out.printf("Scalar multiplication vector6 %s vector7 %s: %s%n%n", vector7, vector8, Vector.multiplicateVector(vector7, vector8));
     }
 }
