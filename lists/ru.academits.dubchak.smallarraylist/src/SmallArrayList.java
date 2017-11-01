@@ -1,12 +1,10 @@
-package ru.academits.dubchak.codetime;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class ListCodeTime {
+public class SmallArrayList {
 
     public static void main(String[] args) throws FileNotFoundException {
         ArrayList<String> listString = new ArrayList<>();
