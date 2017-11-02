@@ -18,7 +18,7 @@ public class Main {
         System.out.printf("vector4 created by Vector(n, double[]): %s%n%n", vector4);
 
 
-        System.out.printf("vector3 * vector4:%s%n%n", vector3.addVector(vector4));
+        System.out.printf("vector3 + vector4:%s%n%n", vector3.addVector(vector4));
 
         System.out.printf("vector3 - vector4:%s%n%n", vector3.subVector(vector4));
 

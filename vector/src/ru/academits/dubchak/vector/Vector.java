@@ -17,6 +17,9 @@ public class Vector {
     }
 
     public Vector(double[] vector) {
+        if (vector.length <= 0) {
+            throw new IllegalArgumentException(Integer.toString(vector.length));
+        }
         this.vector = Arrays.copyOf(vector, vector.length);
     }
 
@@ -43,8 +46,8 @@ public class Vector {
         if (getSize() < vector.getSize()) {
             this.vector = Arrays.copyOf(this.vector, vector.getSize());
         }
-        int minLength = Math.min(getSize(), vector.getSize());
-        for (int i = 0; i < minLength; i++) {
+        int length = vector.getSize();
+        for (int i = 0; i < length; i++) {
             this.vector[i] += vector.vector[i];
         }
         return this;
@@ -54,8 +57,8 @@ public class Vector {
         if (getSize() < vector.getSize()) {
             this.vector = Arrays.copyOf(this.vector, vector.getSize());
         }
-        int minLength = Math.min(getSize(), vector.getSize());
-        for (int i = 0; i < minLength; i++) {
+        int length = vector.getSize();
+        for (int i = 0; i < length; i++) {
             this.vector[i] -= vector.vector[i];
         }
         return this;
@@ -100,12 +103,13 @@ public class Vector {
 
     @Override
     public String toString() {
-        StringBuilder string = new StringBuilder("{" + vector[0]);
+        StringBuilder stringBuilder = new StringBuilder("{");
+        stringBuilder.append(vector[0]);
         for (int i = 1; i < vector.length; i++) {
-            string.append(",").append(vector[i]);
+            stringBuilder.append(",").append(vector[i]);
         }
-        string.append("}");
-        return string.toString();
+        stringBuilder.append("}");
+        return stringBuilder.toString();
     }
 
     @Override
