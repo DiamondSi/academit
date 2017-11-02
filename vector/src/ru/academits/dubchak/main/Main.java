@@ -23,19 +23,19 @@ public class Main {
         System.out.printf("vector3 - vector4:%s%n%n", vector3.subVector(vector4));
 
         final int MULTIPLIER = 100;
-        System.out.printf("vector3 * %d: %s%n%n", MULTIPLIER, vector3.scalarMultiplicateVector(MULTIPLIER));
+        System.out.printf("vector3 * %d: %s%n%n", MULTIPLIER, vector3.scalarMultiplicationVector(MULTIPLIER));
 
         System.out.printf("reverse vector4: %s%n%n", vector4.reverseVector());
 
         System.out.printf("vector4 module: %s%n%n", vector4.getLength());
         int index = 1;
-        System.out.printf("vector4[%d]: %s%n%n", index, vector4.getVectorElementByIndex(index));
+        System.out.printf("vector4[%d]: %s%n%n", index, vector4.getElement(index));
 
         index = 7;
         double value = 555;
-        System.out.printf("vector4[%d]: %s%n", index, vector4.getVectorElementByIndex(index));
-        vector4.setVectorElementByIndex(index, value);
-        System.out.printf("vector4[%d] has set to: %s%n%n", index, vector4.getVectorElementByIndex(index));
+        System.out.printf("vector4[%d]: %s%n", index, vector4.getElement(index));
+        vector4.setElement(index, value);
+        System.out.printf("vector4[%d] has set to: %s%n%n", index, vector4.getElement(index));
 
         double[] array2 = {1, 22, 3, 4, 221, 2};
         Vector vector5 = new Vector(array2);
@@ -52,6 +52,6 @@ public class Main {
         double[] array5 = {2, 1};
         Vector vector7 = new Vector(array4);
         Vector vector8 = new Vector(array5);
-        System.out.printf("Scalar multiplication vector6 %s vector7 %s: %s%n%n", vector7, vector8, Vector.multiplicateVector(vector7, vector8));
+        System.out.printf("Scalar multiplication vector6 %s vector7 %s: %s%n%n", vector7, vector8, Vector.multiplicationVector(vector7, vector8));
     }
 }

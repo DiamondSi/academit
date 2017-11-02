@@ -6,6 +6,9 @@ public class Vector {
     private double[] vector;
 
     public Vector(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException(Integer.toString(n));
+        }
         vector = new double[n];
     }
 
@@ -14,22 +17,21 @@ public class Vector {
     }
 
     public Vector(double[] vector) {
-        this.vector = vector;
+        this.vector = Arrays.copyOf(vector, vector.length);
     }
 
     public Vector(int n, double[] vector) {
-        if (vector.length < n) {
-            this.vector = Arrays.copyOf(vector, n);
-        } else {
-            this.vector = Arrays.copyOf(vector, vector.length);
+        if (n <= 0) {
+            throw new IllegalArgumentException(Integer.toString(n));
         }
+        this.vector = Arrays.copyOf(vector, n);
     }
 
-    public double getVectorElementByIndex(int index) {
+    public double getElement(int index) {
         return this.vector[index];
     }
 
-    public void setVectorElementByIndex(int index, double value) {
+    public void setElement(int index, double value) {
         this.vector[index] = value;
     }
 
@@ -38,37 +40,37 @@ public class Vector {
     }
 
     public Vector addVector(Vector vector) {
-        int resultLength = getSize() > vector.getSize() ? getSize() : vector.getSize();
-        double[] resultArray = Arrays.copyOf(this.vector, resultLength);
-        for (int i = 0; i < vector.getSize(); i++) {
-            resultArray[i] += vector.vector[i];
+        if (getSize() < vector.getSize()) {
+            this.vector = Arrays.copyOf(this.vector, vector.getSize());
         }
-        this.vector = resultArray;
+        int minLength = Math.min(getSize(), vector.getSize());
+        for (int i = 0; i < minLength; i++) {
+            this.vector[i] += vector.vector[i];
+        }
         return this;
     }
 
     public Vector subVector(Vector vector) {
-        int resultLength = getSize() > vector.getSize() ? getSize() : vector.getSize();
-        double[] resultArray = Arrays.copyOf(this.vector, resultLength);
-        for (int i = 0; i < vector.getSize(); i++) {
-            resultArray[i] -= vector.vector[i];
+        if (getSize() < vector.getSize()) {
+            this.vector = Arrays.copyOf(this.vector, vector.getSize());
         }
-        this.vector = resultArray;
+        int minLength = Math.min(getSize(), vector.getSize());
+        for (int i = 0; i < minLength; i++) {
+            this.vector[i] -= vector.vector[i];
+        }
         return this;
     }
 
-    public Vector scalarMultiplicateVector(double scalar) {
+    public Vector scalarMultiplicationVector(double scalar) {
         for (int i = 0; i < this.getSize(); i++) {
-            vector[i] = scalar * vector[i];
+            vector[i] *= scalar;
         }
         return this;
     }
 
     public Vector reverseVector() {
-        for (int i = 0; i < this.getSize(); i++) {
-            vector[i] = -vector[i];
-        }
-        return this;
+        double reverse = -1;
+        return this.scalarMultiplicationVector(reverse);
     }
 
     public double getLength() {
@@ -87,34 +89,35 @@ public class Vector {
         return new Vector(vector1).subVector(vector2);
     }
 
-    public static double multiplicateVector(Vector vector1, Vector vector2) {
-        int arrayLength = vector1.getSize() < vector2.getSize() ? vector1.getSize() : vector2.getSize();
+    public static double multiplicationVector(Vector vector1, Vector vector2) {
+        int arrayLength = Math.min(vector1.getSize(), vector2.getSize());
         double result = 0;
         for (int i = 0; i < arrayLength; i++) {
-            result += vector1.getVectorElementByIndex(i) * vector2.getVectorElementByIndex(i);
+            result += vector1.getElement(i) * vector2.getElement(i);
         }
         return result;
     }
 
     @Override
     public String toString() {
-        return Arrays.toString(vector);
+        StringBuilder string = new StringBuilder("{" + vector[0]);
+        for (int i = 1; i < vector.length; i++) {
+            string.append(",").append(vector[i]);
+        }
+        string.append("}");
+        return string.toString();
     }
 
     @Override
     public boolean equals(Object o) {
-        if (o == this) return true;
-        if (o == null || o.getClass() != this.getClass()) return false;
-        Vector v = (Vector) o;
-        if (v.getSize() != this.getSize()) {
+        if (o == this) {
+            return true;
+        }
+        if (o == null || o.getClass() != this.getClass()) {
             return false;
         }
-        for (int i = 0; i < v.getSize(); i++) {
-            if (this.vector[i] != v.vector[i]) {
-                return false;
-            }
-        }
-        return true;
+        Vector v = (Vector) o;
+        return Arrays.equals(this.vector, v.vector);
     }
 
     @Override
