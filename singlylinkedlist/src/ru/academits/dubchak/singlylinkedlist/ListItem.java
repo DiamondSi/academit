@@ -1,34 +1,33 @@
 package ru.academits.dubchak.singlylinkedlist;
 
-public class ListItem {
-    private int data;
-    private ListItem next;
+public class ListItem<T> {
+    private T data;
+    private ListItem<T> next;
+//    public ListItem() {
+//    }
 
-    public ListItem() {
-    }
-
-    public ListItem(int data) {
+    public ListItem(T data) {
         this.data = data;
     }
 
-    public ListItem(int data, ListItem next) {
+    public ListItem(T data, ListItem<T> next) {
         this.data = data;
         this.next = next;
     }
 
-    public int getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(int data) {
+    public void setData(T data) {
         this.data = data;
     }
 
-    public ListItem getNext() {
+    public ListItem<T> getNext() {
         return next;
     }
 
-    public void setNext(ListItem next) {
+    public void setNext(ListItem<T> next) {
         this.next = next;
     }
 }
