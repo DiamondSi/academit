@@ -14,6 +14,6 @@ public class Main {
                 .map(person-> person.getName())
                 .distinct()
                 .collect(Collectors.toList());
-                forEach(name-> System.out.println(name));
+
     }
 }
