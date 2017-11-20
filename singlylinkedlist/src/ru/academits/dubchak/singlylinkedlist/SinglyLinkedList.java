@@ -17,6 +17,10 @@ public class SinglyLinkedList<T> {
         return length;
     }
 
+    public T getListItemData(int index) {
+        return getListItem(index).getData();
+    }
+
     public ListItem<T> getListItem(int index) {
         if (index < 0 || index >= length) {
             throw new IllegalArgumentException(Integer.toString(index));
@@ -29,10 +33,7 @@ public class SinglyLinkedList<T> {
                 }
             }
         }
-    }
-
-    public T getListItemData(int index) {
-        return getListItem(index).getData();
+        return null;
     }
 
 
