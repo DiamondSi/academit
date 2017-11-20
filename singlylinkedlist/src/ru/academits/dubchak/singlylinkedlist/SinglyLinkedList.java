@@ -21,48 +21,43 @@ public class SinglyLinkedList<T> {
         return getListItem(index).getData();
     }
 
-    public ListItem<T> getListItem(int index) {
-        if (index < 0 || index >= length) {
-            throw new IllegalArgumentException(Integer.toString(index));
-        } else {
-            int i = index;
-            for (ListItem<T> p = head; p != null; p = p.getNext()) {
-                i--;
-                if (i == 0) {
-                    return p;
-                }
-            }
-        }
-        return null;
-    }
-
-
     public T setListItemData(int index, T data) {
-        T oldData = getListItem(index);
+        T oldData = getListItemData(index);
         getListItem(index).setData(data);
         return oldData;
     }
 
-    public int delListItem(int index) {
+    public ListItem<T> getListItem(int index) {
         if (index < 0 || index >= length) {
             throw new IllegalArgumentException(Integer.toString(index));
-        } else {
-            int delItemData = getListItem(index).getData();
-            if (index == 0) {
-                head.setNext(getListItem(1));
-            } else if (index == length - 1) {
-                getListItem(index).setNext(null);
-            } else {
-                getListItem(index - 1).setNext(getListItem(index + 1));
-            }
-            length--;
-            return delItemData;
         }
+        ListItem<T> p = head;
+        for (int i = 1; i <= index; i++) {
+            p = p.getNext();
+        }
+        return p;
     }
 
-    public void insFirstListItem(ListItem listItem) {
-        listItem.setNext(getHead().getNext());
-        getHead().setNext(listItem);
+    public T delListItem(int index) {
+        if (index < 0 || index >= length) {
+            throw new IllegalArgumentException(Integer.toString(index));
+        }
+        T delItemData = getListItemData(index);
+        if (index == 0) {
+            head.setNext(getListItem(1));
+        } else if (index == length - 1) {
+            getListItem(index).setNext(null);
+        } else {
+            getListItem(index - 1).setNext(getListItem(index + 1));
+        }
+        length--;
+        return delItemData;
+    }
+
+    public void insFirstListItem(T data) {
+//        listItem.setNext(getHead().getNext());
+//        getHead().setNext(listItem);
+        ListItem<T> p = new ListItem<T>(data, head);
         length++;
     }
 
