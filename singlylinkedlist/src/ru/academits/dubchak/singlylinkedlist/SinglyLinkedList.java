@@ -82,13 +82,23 @@ public class SinglyLinkedList<T> {
     }
 
     //TODO удаление узла по значению
-    public void delByValue(T data) {
-        for (ListItem<T> p = head; p != null; p = p.getNext()) {
-            if (p.getData() == data) {
-//                p.setNext(p.getNext());
-                length--;
+    public boolean delByValue(T data) {
+        if (head.getData() == data) {
+            delHead();
+            return true;
+        } else {
+            ListItem<T> previousItem = head;
+            for (ListItem<T> currentItem = head.getNext(); currentItem != null; currentItem = currentItem.getNext()) {
+                if (currentItem.getData() == data) {
+                    previousItem.setNext(currentItem.getNext());
+                    length--;
+                    return true;
+                } else {
+                    previousItem = currentItem;
+                }
             }
         }
+        return false;
     }
 
     //	удаление первого элемента, пусть выдает значение элемента
