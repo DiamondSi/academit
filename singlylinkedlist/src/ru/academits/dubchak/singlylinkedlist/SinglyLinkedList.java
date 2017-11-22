@@ -81,7 +81,7 @@ public class SinglyLinkedList<T> {
         }
     }
 
-    //TODO удаление узла по значению
+    // удаление узла по значению
     public boolean delByValue(T data) {
         if (head.getData() == data) {
             delHead();
@@ -108,7 +108,15 @@ public class SinglyLinkedList<T> {
         return data;
     }
 
-    //TODO вставка и удаление узла после указанного узла
+    // вставка узла после указанного узла
+    public void insAfterListItem(ListItem<T> listItem, T data) {
+        listItem.setNext(new ListItem<>(data, listItem.getNext()));
+    }
+
+    // удаление узла после указанного узла
+    public void delAfterListItem(ListItem<T> listItem) {
+        listItem.setNext(listItem.getNext().getNext());
+    }
     //TODO разворот списка за линейное время
     //TODO копирование списка
 }
