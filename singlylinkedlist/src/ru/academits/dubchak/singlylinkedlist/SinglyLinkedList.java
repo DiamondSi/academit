@@ -117,6 +117,21 @@ public class SinglyLinkedList<T> {
     public void delAfterListItem(ListItem<T> listItem) {
         listItem.setNext(listItem.getNext().getNext());
     }
+
     //TODO разворот списка за линейное время
+    public void reverseSinglyLinkedList() {
+        ListItem<T> previousItem = head;
+        ListItem<T> currentItem = head.getNext();
+        ListItem<T> nextItem = null;
+
+
+
+        currentItem.setNext(previousItem);
+        previousItem = currentItem;
+        while (currentItem.getNext()!=null){
+            nextItem = currentItem.getNext();
+        }
+
+    }
     //TODO копирование списка
 }
