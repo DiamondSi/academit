@@ -122,14 +122,9 @@ public class SinglyLinkedList<T> {
     public void reverseSinglyLinkedList() {
         ListItem<T> previousItem = head;
         ListItem<T> currentItem = head.getNext();
-        ListItem<T> nextItem = null;
+        previousItem.setNext(null);
+        while (currentItem != null) {
 
-
-
-        currentItem.setNext(previousItem);
-        previousItem = currentItem;
-        while (currentItem.getNext()!=null){
-            nextItem = currentItem.getNext();
         }
 
     }
