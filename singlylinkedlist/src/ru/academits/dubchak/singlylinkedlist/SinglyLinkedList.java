@@ -67,6 +67,7 @@ public class SinglyLinkedList<T> {
     //	вставка элемента в начало
     public void insFirstListItem(T data) {
         ListItem<T> p = new ListItem<>(data, head);
+        head = p;
         length++;
     }
 
@@ -145,5 +146,16 @@ public class SinglyLinkedList<T> {
             }
         }
         return singlyLinkedList;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder("{");
+        stringBuilder.append("{length:").append(length).append("}");
+        for (ListItem<T> p = head; p != null; p = p.getNext()) {
+            stringBuilder.append(",").append(p.getData());
+        }
+        stringBuilder.append("}");
+        return stringBuilder.toString();
     }
 }

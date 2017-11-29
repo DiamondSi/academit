@@ -5,19 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class SinglyLinkedListTest {
-    @org.junit.Before
-    public void setUp() throws Exception {
-    }
-
-    @org.junit.After
-    public void tearDown() throws Exception {
-    }
-
-    @Test
-    public void test() {
-
-    }
-
+    private SinglyLinkedList<Integer> singlyLinkedList;
     @Test
     public void getLength() throws Exception {
     }
@@ -64,6 +52,14 @@ public class SinglyLinkedListTest {
 
     @Test
     public void delAfterListItem() throws Exception {
+    }
+
+    @Test
+    public void reverseSinglyLinkedList() throws Exception {
+    }
+
+    @Test
+    public void copySinglyLinkedList() throws Exception {
     }
 
 }
