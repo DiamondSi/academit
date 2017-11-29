@@ -118,15 +118,32 @@ public class SinglyLinkedList<T> {
         listItem.setNext(listItem.getNext().getNext());
     }
 
-    //TODO разворот списка за линейное время
+    // разворот списка за линейное время
     public void reverseSinglyLinkedList() {
-        ListItem<T> previousItem = head;
-        ListItem<T> currentItem = head.getNext();
-        previousItem.setNext(null);
-        while (currentItem != null) {
-
+        if (head != null) {
+            ListItem<T> previousItem = head;
+            ListItem<T> nextItem = head.getNext();
+            previousItem.setNext(null);
+            while (nextItem != null) {
+                ListItem<T> currentItem = nextItem;
+                nextItem = currentItem.getNext();
+                currentItem.setNext(previousItem);
+                previousItem = currentItem;
+            }
+            head = previousItem;
         }
-
     }
+
     //TODO копирование списка
+    public SinglyLinkedList<T> copySinglyLinkedList() {
+        SinglyLinkedList<T> singlyLinkedList = new SinglyLinkedList(new ListItem(head.getData()));
+        if (head != null) {
+            int index = 1;
+            for (ListItem<T> p = head.getNext(); p != null; p = p.getNext()) {
+                singlyLinkedList.insListItem(p.getData(), index);
+                ++index;
+            }
+        }
+        return singlyLinkedList;
+    }
 }
