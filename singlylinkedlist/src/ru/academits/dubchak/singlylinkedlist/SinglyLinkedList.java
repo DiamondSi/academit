@@ -112,6 +112,7 @@ public class SinglyLinkedList<T> {
     // вставка узла после указанного узла
     public void insAfterListItem(ListItem<T> listItem, T data) {
         listItem.setNext(new ListItem<>(data, listItem.getNext()));
+        ++length;
     }
 
     // удаление узла после указанного узла
@@ -139,10 +140,10 @@ public class SinglyLinkedList<T> {
     public SinglyLinkedList<T> copySinglyLinkedList() {
         SinglyLinkedList<T> singlyLinkedList = new SinglyLinkedList(new ListItem(head.getData()));
         if (head != null) {
-            int index = 1;
+            ListItem<T> currentItem = singlyLinkedList.head;
             for (ListItem<T> p = head.getNext(); p != null; p = p.getNext()) {
-                singlyLinkedList.insListItem(p.getData(), index);
-                ++index;
+                singlyLinkedList.insAfterListItem(currentItem, p.getData());
+                currentItem = currentItem.getNext();
             }
         }
         return singlyLinkedList;
