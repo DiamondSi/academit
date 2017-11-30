@@ -66,8 +66,7 @@ public class SinglyLinkedList<T> {
 
     //	вставка элемента в начало
     public void insFirstListItem(T data) {
-        ListItem<T> p = new ListItem<>(data, head);
-        head = p;
+        head = new ListItem<>(data, head);
         length++;
     }
 
@@ -90,7 +89,7 @@ public class SinglyLinkedList<T> {
         } else {
             ListItem<T> previousItem = head;
             for (ListItem<T> currentItem = head.getNext(); currentItem != null; currentItem = currentItem.getNext()) {
-                if (currentItem.getData() == data) {
+                if (currentItem.getData().equals(data)) {
                     previousItem.setNext(currentItem.getNext());
                     length--;
                     return true;
@@ -136,9 +135,9 @@ public class SinglyLinkedList<T> {
         }
     }
 
-    //TODO копирование списка
+    // копирование списка
     public SinglyLinkedList<T> copySinglyLinkedList() {
-        SinglyLinkedList<T> singlyLinkedList = new SinglyLinkedList(new ListItem(head.getData()));
+        SinglyLinkedList<T> singlyLinkedList = new SinglyLinkedList<>(new ListItem<>(head.getData()));
         if (head != null) {
             ListItem<T> currentItem = singlyLinkedList.head;
             for (ListItem<T> p = head.getNext(); p != null; p = p.getNext()) {
@@ -151,12 +150,9 @@ public class SinglyLinkedList<T> {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder("{");
-        stringBuilder.append("{length:").append(length).append("}");
-        for (ListItem<T> p = head; p != null; p = p.getNext()) {
-            stringBuilder.append(",").append(p.getData());
-        }
-        stringBuilder.append("}");
-        return stringBuilder.toString();
+        return "SinglyLinkedList{" +
+                "head=" + head +
+                ", length=" + length +
+                '}';
     }
 }
