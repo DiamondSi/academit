@@ -4,6 +4,9 @@ public class SinglyLinkedList<T> {
     private ListItem<T> head;
     private int length;
 
+    public SinglyLinkedList() {
+    }
+
     public SinglyLinkedList(ListItem<T> head) {
         this.head = head;
         this.length = 1;
@@ -27,15 +30,16 @@ public class SinglyLinkedList<T> {
     //	изменение значения по указанному индексу.
     // Изменение значения по индексу пусть выдает старое значение.
     public T setListItemData(int index, T data) {
-        T oldData = getListItemData(index);
-        getListItem(index).setData(data);
+        ListItem<T> p = getListItem(index);
+        T oldData = p.getData();
+        p.setData(data);
         return oldData;
     }
 
     //	получение узла по индексу
     public ListItem<T> getListItem(int index) {
         if (index < 0 || index >= length) {
-            throw new IllegalArgumentException(Integer.toString(index));
+            throw new IndexOutOfBoundsException(Integer.toString(index));
         }
         int i = 0;
         for (ListItem<T> p = head; p != null; p = p.getNext()) {
@@ -48,32 +52,32 @@ public class SinglyLinkedList<T> {
     }
 
     // удаление элемента по индексу, пусть выдает значение элемента
-    public T delListItem(int index) {
+    public T deleteListItem(int index) {
         if (index < 0 || index >= length) {
-            throw new IllegalArgumentException(Integer.toString(index));
+            throw new IndexOutOfBoundsException(Integer.toString(index));
         }
-        T delItemData = getListItemData(index);
+        T oldData = null;
         if (index == 0) {
-            delHead();
-        } else if (index == length - 1) {
-            getListItem(index).setNext(null);
+            oldData = head.getData();
+            deleteHead();
         } else {
-            getListItem(index - 1).setNext(getListItem(index + 1));
+            ListItem<T> previousItem = getListItem(index - 1);
+            previousItem.setNext(previousItem.getNext().getNext());
         }
         length--;
-        return delItemData;
+        return oldData;
     }
 
     //	вставка элемента в начало
-    public void insFirstListItem(T data) {
+    public void insertFirstListItem(T data) {
         head = new ListItem<>(data, head);
         length++;
     }
 
     //	вставка элемента по индексу
-    public void insListItem(T data, int index) {
+    public void insertListItem(T data, int index) {
         if (index < 0 || index >= length) {
-            throw new IllegalArgumentException(Integer.toString(index));
+            throw new IndexOutOfBoundsException(Integer.toString(index));
         } else {
             ListItem<T> p = new ListItem<>(data, getListItem(index));
             getListItem(index - 1).setNext(p);
@@ -82,29 +86,29 @@ public class SinglyLinkedList<T> {
     }
 
     // удаление узла по значению
-    public boolean delByValue(T data) {
-        if (head.getData() == data) {
-            delHead();
+    public boolean deleteByValue(T data) {
+        if (data == null && data == head.getData() || head.getData().equals(data)) {
+            deleteHead();
             return true;
         } else {
             ListItem<T> previousItem = head;
             for (ListItem<T> currentItem = head.getNext(); currentItem != null; currentItem = currentItem.getNext()) {
-                if (currentItem.getData().equals(data)) {
+                if (data == null && data == currentItem.getData() || currentItem.getData().equals(data)) {
                     previousItem.setNext(currentItem.getNext());
                     length--;
                     return true;
-                } else {
-                    previousItem = currentItem;
                 }
+                previousItem = currentItem;
             }
         }
         return false;
     }
 
     //	удаление первого элемента, пусть выдает значение элемента
-    public T delHead() {
+    public T deleteHead() {
         T data = head.getData();
         head = head.getNext();
+        --length;
         return data;
     }
 
@@ -115,7 +119,7 @@ public class SinglyLinkedList<T> {
     }
 
     // удаление узла после указанного узла
-    public void delAfterListItem(ListItem<T> listItem) {
+    public void deleteAfterListItem(ListItem<T> listItem) {
         listItem.setNext(listItem.getNext().getNext());
     }
 
