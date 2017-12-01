@@ -6,13 +6,9 @@ import ru.academits.dubchak.singlylinkedlist.SinglyLinkedList;
 public class Main {
     public static void main(String[] args) {
         SinglyLinkedList<Integer> list = new SinglyLinkedList<>(new ListItem<>(0));
-        System.out.println(list.getHead());
         list.insertFirstListItem(1);
-        System.out.println(list.getHead());
         list.insertFirstListItem(2);
-        System.out.println(list.getHead());
         list.insertFirstListItem(3);
-        System.out.println(list.getHead());
         list.insertFirstListItem(null);
         System.out.println(list.getHead());
         System.out.println(list.getLength());
@@ -21,9 +17,9 @@ public class Main {
         System.out.println(list.getListItem(0));
         System.out.println(list.deleteListItem(2));
         list.insertFirstListItem(100);
-        System.out.println(list.getHead());
+        list.insertFirstListItem(null);
         list.insertListItem(null, 4);
-        System.out.println(list.getHead());
+        list.insertListItem(222, 4);
         System.out.println(list.deleteByValue(null));
         System.out.println(list.deleteHead());
         list.insAfterListItem(list.getHead().getNext().getNext().getNext(), 444);

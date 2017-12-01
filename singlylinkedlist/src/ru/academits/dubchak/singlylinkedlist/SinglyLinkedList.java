@@ -78,22 +78,26 @@ public class SinglyLinkedList<T> {
     public void insertListItem(T data, int index) {
         if (index < 0 || index >= length) {
             throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
+        if (index == 0) {
+            insertFirstListItem(data);
         } else {
-            ListItem<T> p = new ListItem<>(data, getListItem(index));
-            getListItem(index - 1).setNext(p);
+            ListItem<T> previousItem = getListItem(index - 1);
+            previousItem.setNext(new ListItem<>(data, previousItem.getNext()));
             length++;
         }
+
     }
 
     // удаление узла по значению
     public boolean deleteByValue(T data) {
-        if (data == null && data == head.getData() || head.getData().equals(data)) {
+        if (data == null ? data == head.getData() : data.equals(head.getData())) {
             deleteHead();
             return true;
         } else {
             ListItem<T> previousItem = head;
             for (ListItem<T> currentItem = head.getNext(); currentItem != null; currentItem = currentItem.getNext()) {
-                if (data == null && data == currentItem.getData() || currentItem.getData().equals(data)) {
+                if (data == null ? data == currentItem.getData() : data.equals(currentItem.getData())) {
                     previousItem.setNext(currentItem.getNext());
                     length--;
                     return true;
