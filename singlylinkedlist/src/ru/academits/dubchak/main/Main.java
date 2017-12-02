@@ -6,6 +6,9 @@ import ru.academits.dubchak.singlylinkedlist.SinglyLinkedList;
 public class Main {
     public static void main(String[] args) {
         SinglyLinkedList<Integer> list = new SinglyLinkedList<>(new ListItem<>(0));
+        System.out.println(list);
+        list.deleteHead();
+        System.out.println(list);
         list.insertFirstListItem(1);
         list.insertFirstListItem(2);
         list.insertFirstListItem(3);
@@ -31,16 +34,18 @@ public class Main {
         list.deleteAfterListItem(list.getHead().getNext().getNext());
         System.out.println(list);
         list.reverseSinglyLinkedList();
-        System.out.println(list);
+        System.out.println("list:  " + list);
         SinglyLinkedList<Integer> list1 = list.copySinglyLinkedList();
-        System.out.println(list1);
+        System.out.println("list1: " + list1);
+        System.out.println();
         System.out.println(list);
         list.insertListItem(777, list.getLength());
-        System.out.println("add to the end " + list.getHead());
+        System.out.println("add to the end " + list);
+        System.out.println();
+        list.deleteHead();
         SinglyLinkedList<Integer> list3 = new SinglyLinkedList<>();
         System.out.println(list3);
         SinglyLinkedList<Integer> list4 = list3.copySinglyLinkedList();
         System.out.println(list4);
-        list3.deleteHead();
     }
 }
