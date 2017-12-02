@@ -15,20 +15,32 @@ public class Main {
         System.out.println(list.getListItemData(0));
         System.out.println(list.setListItemData(1, 999));
         System.out.println(list.getListItem(0));
+        System.out.println();
+        System.out.println(list);
         System.out.println(list.deleteListItem(2));
+        System.out.println(list);
+        System.out.println();
         list.insertFirstListItem(100);
         list.insertFirstListItem(null);
         list.insertListItem(null, 4);
         list.insertListItem(222, 4);
         System.out.println(list.deleteByValue(null));
-        System.out.println(list.deleteHead());
-        list.insAfterListItem(list.getHead().getNext().getNext().getNext(), 444);
-        System.out.println(list.getHead());
+        System.out.println(list);
+        list.insertAfterListItem(list.getHead().getNext().getNext().getNext(), 444);
+        System.out.println(list);
         list.deleteAfterListItem(list.getHead().getNext().getNext());
-        System.out.println(list.getHead());
+        System.out.println(list);
         list.reverseSinglyLinkedList();
-        System.out.println(list.getHead());
+        System.out.println(list);
         SinglyLinkedList<Integer> list1 = list.copySinglyLinkedList();
-        System.out.println(list1.getHead());
+        System.out.println(list1);
+        System.out.println(list);
+        list.insertListItem(777, list.getLength());
+        System.out.println("add to the end " + list.getHead());
+        SinglyLinkedList<Integer> list3 = new SinglyLinkedList<>();
+        System.out.println(list3);
+        SinglyLinkedList<Integer> list4 = list3.copySinglyLinkedList();
+        System.out.println(list4);
+        list3.deleteHead();
     }
 }

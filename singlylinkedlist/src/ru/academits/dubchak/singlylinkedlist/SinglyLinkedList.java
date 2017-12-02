@@ -1,5 +1,7 @@
 package ru.academits.dubchak.singlylinkedlist;
 
+import java.util.Objects;
+
 public class SinglyLinkedList<T> {
     private ListItem<T> head;
     private int length;
@@ -63,8 +65,8 @@ public class SinglyLinkedList<T> {
         } else {
             ListItem<T> previousItem = getListItem(index - 1);
             previousItem.setNext(previousItem.getNext().getNext());
+            --length;
         }
-        length--;
         return oldData;
     }
 
@@ -76,7 +78,7 @@ public class SinglyLinkedList<T> {
 
     //	вставка элемента по индексу
     public void insertListItem(T data, int index) {
-        if (index < 0 || index >= length) {
+        if (index < 0 || index > length) {
             throw new IndexOutOfBoundsException(Integer.toString(index));
         }
         if (index == 0) {
@@ -91,13 +93,13 @@ public class SinglyLinkedList<T> {
 
     // удаление узла по значению
     public boolean deleteByValue(T data) {
-        if (data == null ? data == head.getData() : data.equals(head.getData())) {
+        if (Objects.equals(data, head.getData())) {
             deleteHead();
             return true;
         } else {
             ListItem<T> previousItem = head;
             for (ListItem<T> currentItem = head.getNext(); currentItem != null; currentItem = currentItem.getNext()) {
-                if (data == null ? data == currentItem.getData() : data.equals(currentItem.getData())) {
+                if (Objects.equals(data, currentItem.getData())) {
                     previousItem.setNext(currentItem.getNext());
                     length--;
                     return true;
@@ -110,6 +112,9 @@ public class SinglyLinkedList<T> {
 
     //	удаление первого элемента, пусть выдает значение элемента
     public T deleteHead() {
+        if (length == 0) {
+            throw new NullPointerException("List is empty. Head deleting is impossible");
+        }
         T data = head.getData();
         head = head.getNext();
         --length;
@@ -117,7 +122,7 @@ public class SinglyLinkedList<T> {
     }
 
     // вставка узла после указанного узла
-    public void insAfterListItem(ListItem<T> listItem, T data) {
+    public void insertAfterListItem(ListItem<T> listItem, T data) {
         listItem.setNext(new ListItem<>(data, listItem.getNext()));
         ++length;
     }
@@ -125,6 +130,7 @@ public class SinglyLinkedList<T> {
     // удаление узла после указанного узла
     public void deleteAfterListItem(ListItem<T> listItem) {
         listItem.setNext(listItem.getNext().getNext());
+        --length;
     }
 
     // разворот списка за линейное время
@@ -145,11 +151,12 @@ public class SinglyLinkedList<T> {
 
     // копирование списка
     public SinglyLinkedList<T> copySinglyLinkedList() {
-        SinglyLinkedList<T> singlyLinkedList = new SinglyLinkedList<>(new ListItem<>(head.getData()));
-        if (head != null) {
+        SinglyLinkedList<T> singlyLinkedList = new SinglyLinkedList<>();
+        if (length > 0) {
+            singlyLinkedList.insertFirstListItem(head.getData());
             ListItem<T> currentItem = singlyLinkedList.head;
             for (ListItem<T> p = head.getNext(); p != null; p = p.getNext()) {
-                singlyLinkedList.insAfterListItem(currentItem, p.getData());
+                singlyLinkedList.insertAfterListItem(currentItem, p.getData());
                 currentItem = currentItem.getNext();
             }
         }
