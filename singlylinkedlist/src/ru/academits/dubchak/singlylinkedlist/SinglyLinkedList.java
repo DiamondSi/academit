@@ -113,7 +113,7 @@ public class SinglyLinkedList<T> {
     //	удаление первого элемента, пусть выдает значение элемента
     public T deleteHead() {
         if (length == 0) {
-            throw new NullPointerException("List is empty. Head deleting is impossible");
+            throw new IndexOutOfBoundsException("List is empty. Head deleting is impossible");
         }
         T data = head.getData();
         head = head.getNext();
@@ -134,7 +134,7 @@ public class SinglyLinkedList<T> {
     }
 
     // разворот списка за линейное время
-    public void reverseSinglyLinkedList() {
+    public void reverse() {
         if (head != null) {
             ListItem<T> previousItem = head;
             ListItem<T> nextItem = head.getNext();
@@ -150,7 +150,7 @@ public class SinglyLinkedList<T> {
     }
 
     // копирование списка
-    public SinglyLinkedList<T> copySinglyLinkedList() {
+    public SinglyLinkedList<T> copy() {
         SinglyLinkedList<T> singlyLinkedList = new SinglyLinkedList<>();
         if (length > 0) {
             singlyLinkedList.insertFirstListItem(head.getData());

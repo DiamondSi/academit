@@ -33,9 +33,9 @@ public class Main {
         System.out.println(list);
         list.deleteAfterListItem(list.getHead().getNext().getNext());
         System.out.println(list);
-        list.reverseSinglyLinkedList();
+        list.reverse();
         System.out.println("list:  " + list);
-        SinglyLinkedList<Integer> list1 = list.copySinglyLinkedList();
+        SinglyLinkedList<Integer> list1 = list.copy();
         System.out.println("list1: " + list1);
         System.out.println();
         System.out.println(list);
@@ -45,7 +45,7 @@ public class Main {
         list.deleteHead();
         SinglyLinkedList<Integer> list3 = new SinglyLinkedList<>();
         System.out.println(list3);
-        SinglyLinkedList<Integer> list4 = list3.copySinglyLinkedList();
+        SinglyLinkedList<Integer> list4 = list3.copy();
         System.out.println(list4);
     }
 }
