@@ -79,7 +79,7 @@ public class MyArrayList<T> implements List<T> {
      *
      * @return an array containing all of the elements in this list in proper
      * sequence
-     * @see Arrays#asList(Object[])
+//     * @see Arrays#asList(Object[])
      */
     @Override
     public Object[] toArray() {
