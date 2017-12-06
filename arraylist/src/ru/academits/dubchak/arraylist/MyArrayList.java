@@ -32,6 +32,7 @@ public class MyArrayList<T> implements List<T> {
     }
 
     // TODO
+
     /**
      * Returns <tt>true</tt> if this list contains the specified element.
      * More formally, returns <tt>true</tt> if and only if this list contains
@@ -53,6 +54,7 @@ public class MyArrayList<T> implements List<T> {
     }
 
     // TODO
+
     /**
      * Returns an iterator over the elements in this list in proper sequence.
      *
@@ -65,6 +67,7 @@ public class MyArrayList<T> implements List<T> {
 
 
     // TODO
+
     /**
      * Returns an array containing all of the elements in this list in proper
      * sequence (from first to last element).
@@ -79,7 +82,7 @@ public class MyArrayList<T> implements List<T> {
      *
      * @return an array containing all of the elements in this list in proper
      * sequence
-//     * @see Arrays#asList(Object[])
+     * //     * @see Arrays#asList(Object[])
      */
     @Override
     public Object[] toArray() {
@@ -88,6 +91,7 @@ public class MyArrayList<T> implements List<T> {
 
 
     // TODO
+
     /**
      * Returns an array containing all of the elements in this list in
      * proper sequence (from first to last element); the runtime type of
@@ -134,6 +138,7 @@ public class MyArrayList<T> implements List<T> {
 
 
     // TODO
+
     /**
      * Appends the specified element to the end of this list (optional
      * operation).
@@ -163,6 +168,7 @@ public class MyArrayList<T> implements List<T> {
 
 
     // TODO
+
     /**
      * Removes the first occurrence of the specified element from this list,
      * if it is present (optional operation).  If this list does not contain
@@ -191,6 +197,7 @@ public class MyArrayList<T> implements List<T> {
 
 
     // TODO
+
     /**
      * Returns <tt>true</tt> if this list contains all of the elements of the
      * specified collection.
@@ -215,8 +222,8 @@ public class MyArrayList<T> implements List<T> {
     }
 
 
-
     // TODO
+
     /**
      * Appends all of the elements in the specified collection to the end of
      * this list, in the order that they are returned by the specified
@@ -245,6 +252,7 @@ public class MyArrayList<T> implements List<T> {
 
 
     // TODO
+
     /**
      * Inserts all of the elements in the specified collection into this
      * list at the specified position (optional operation).  Shifts the
@@ -279,6 +287,7 @@ public class MyArrayList<T> implements List<T> {
 
 
     // TODO
+
     /**
      * Removes from this list all of its elements that are contained in the
      * specified collection (optional operation).
@@ -304,6 +313,7 @@ public class MyArrayList<T> implements List<T> {
 
 
     // TODO
+
     /**
      * Retains only the elements in this list that are contained in the
      * specified collection (optional operation).  In other words, removes
@@ -331,6 +341,7 @@ public class MyArrayList<T> implements List<T> {
 
 
     // TODO
+
     /**
      * Removes all of the elements from this list (optional operation).
      * The list will be empty after this call returns.
@@ -344,7 +355,6 @@ public class MyArrayList<T> implements List<T> {
     }
 
 
-    // TODO
     /**
      * Returns the element at the specified position in this list.
      *
@@ -355,11 +365,12 @@ public class MyArrayList<T> implements List<T> {
      */
     @Override
     public T get(int index) {
-        return null;
+        //TODO бросить исключение если выход за length
+        return items[index];
     }
 
-
     // TODO
+
     /**
      * Replaces the element at the specified position in this list with the
      * specified element (optional operation).
@@ -380,11 +391,15 @@ public class MyArrayList<T> implements List<T> {
      */
     @Override
     public T set(int index, T element) {
-        return null;
+        //TODO бросить исключение если выход за length
+        T temp = items[index];
+        items[index] = element;
+        return temp;
     }
 
 
     // TODO
+
     /**
      * Inserts the specified element at the specified position in this list
      * (optional operation).  Shifts the element currently at that position
@@ -411,6 +426,7 @@ public class MyArrayList<T> implements List<T> {
 
 
     // TODO
+
     /**
      * Removes the element at the specified position in this list (optional
      * operation).  Shifts any subsequent elements to the left (subtracts one
@@ -431,6 +447,7 @@ public class MyArrayList<T> implements List<T> {
 
 
     // TODO
+
     /**
      * Returns the index of the first occurrence of the specified element
      * in this list, or -1 if this list does not contain the element.
@@ -455,6 +472,7 @@ public class MyArrayList<T> implements List<T> {
 
 
     // TODO
+
     /**
      * Returns the index of the last occurrence of the specified element
      * in this list, or -1 if this list does not contain the element.
@@ -479,6 +497,7 @@ public class MyArrayList<T> implements List<T> {
 
 
     // TODO
+
     /**
      * Returns a list iterator over the elements in this list (in proper
      * sequence).
@@ -493,6 +512,7 @@ public class MyArrayList<T> implements List<T> {
 
 
     // TODO
+
     /**
      * Returns a list iterator over the elements in this list (in proper
      * sequence), starting at the specified position in the list.
