@@ -11,10 +11,16 @@ public class MyArrayList<T> implements List<T> {
     private int length;
 
     private class MyIterator implements Iterator<T> {
+        private int index;
 
+        public MyIterator(int index) {
+            this.index = index;
+        }
+
+        // TODO подумать - какую сделатьп роверку
         @Override
         public boolean hasNext() {
-            return false;
+            return index != length;
         }
 
         @Override
