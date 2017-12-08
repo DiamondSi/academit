@@ -4,12 +4,36 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.function.Consumer;
 
 public class MyArrayList<T> implements List<T> {
     private T[] items = (T[]) new Object[10];
     private int length;
 
-    private class MyListIterator implements ListIterator<T>{
+    private class MyIterator implements Iterator<T> {
+
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public T next() {
+            return null;
+        }
+
+        @Override
+        public void remove() {
+
+        }
+
+        @Override
+        public void forEachRemaining(Consumer<? super T> consumer) {
+
+        }
+    }
+
+    private class MyListIterator implements ListIterator<T> {
 
         @Override
         public boolean hasNext() {
