@@ -6,85 +6,19 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.function.Consumer;
 
-public class MyArrayList<T> implements List<T> {
-    private T[] items = (T[]) new Object[10];
+public class MyArrayList<E> implements List<E> {
+    private static final int DEFAULT_CAPACITY = 10;
+    private final E[] EMPTY_ITEMS={};
+    private E[] items = (E[]) new Object[10];
     private int length;
 
-    private class MyIterator implements Iterator<T> {
-        private int index;
-
-        public MyIterator(int index) {
-            this.index = index;
+    public MyArrayList(int capacity) {
+        if (capacity > 0) {
+            items = (E[]) new Object[length];
+        }else if (capacity==0){
+            items=
         }
-
-        // TODO подумать - какую сделатьп роверку
-        @Override
-        public boolean hasNext() {
-            return index != length;
-        }
-
-        @Override
-        public T next() {
-            return null;
-        }
-
-        @Override
-        public void remove() {
-
-        }
-
-        @Override
-        public void forEachRemaining(Consumer<? super T> consumer) {
-
-        }
-    }
-
-    private class MyListIterator implements ListIterator<T> {
-
-        @Override
-        public boolean hasNext() {
-            return false;
-        }
-
-        @Override
-        public T next() {
-            return null;
-        }
-
-        @Override
-        public boolean hasPrevious() {
-            return false;
-        }
-
-        @Override
-        public T previous() {
-            return null;
-        }
-
-        @Override
-        public int nextIndex() {
-            return 0;
-        }
-
-        @Override
-        public int previousIndex() {
-            return 0;
-        }
-
-        @Override
-        public void remove() {
-
-        }
-
-        @Override
-        public void set(T t) {
-
-        }
-
-        @Override
-        public void add(T t) {
-
-        }
+        this.length = length;
     }
 
     /**
@@ -109,8 +43,6 @@ public class MyArrayList<T> implements List<T> {
         return length == 0;
     }
 
-    // TODO
-
     /**
      * Returns <tt>true</tt> if this list contains the specified element.
      * More formally, returns <tt>true</tt> if and only if this list contains
@@ -131,18 +63,15 @@ public class MyArrayList<T> implements List<T> {
         return false;
     }
 
-    // TODO
-
     /**
      * Returns an iterator over the elements in this list in proper sequence.
      *
      * @return an iterator over the elements in this list in proper sequence
      */
     @Override
-    public Iterator<T> iterator() {
+    public Iterator<E> iterator() {
         return null;
     }
-
 
     // TODO
 
@@ -166,7 +95,6 @@ public class MyArrayList<T> implements List<T> {
     public Object[] toArray() {
         return new Object[0];
     }
-
 
     // TODO
 
@@ -210,7 +138,7 @@ public class MyArrayList<T> implements List<T> {
      * @throws NullPointerException if the specified array is null
      */
     @Override
-    public <T1> T1[] toArray(T1[] a) {
+    public <E1> E1[] toArray(E1[] a) {
         return null;
     }
 
@@ -228,7 +156,7 @@ public class MyArrayList<T> implements List<T> {
      * classes should clearly specify in their documentation any restrictions
      * on what elements may be added.
      *
-     * @param t element to be appended to this list
+     * @param e element to be appended to this list
      * @return <tt>true</tt> (as specified by {@link Collection#add})
      * @throws UnsupportedOperationException if the <tt>add</tt> operation
      *                                       is not supported by this list
@@ -240,7 +168,7 @@ public class MyArrayList<T> implements List<T> {
      *                                       prevents it from being added to this list
      */
     @Override
-    public boolean add(T t) {
+    public boolean add(E e) {
         return false;
     }
 
@@ -324,7 +252,7 @@ public class MyArrayList<T> implements List<T> {
      * @see #add(Object)
      */
     @Override
-    public boolean addAll(Collection<? extends T> c) {
+    public boolean addAll(Collection<? extends E> c) {
         return false;
     }
 
@@ -359,7 +287,7 @@ public class MyArrayList<T> implements List<T> {
      *                                       (<tt>index &lt; 0 || index &gt; size()</tt>)
      */
     @Override
-    public boolean addAll(int index, Collection<? extends T> c) {
+    public boolean addAll(int index, Collection<? extends E> c) {
         return false;
     }
 
@@ -433,6 +361,8 @@ public class MyArrayList<T> implements List<T> {
     }
 
 
+    // TODO
+
     /**
      * Returns the element at the specified position in this list.
      *
@@ -442,10 +372,11 @@ public class MyArrayList<T> implements List<T> {
      *                                   (<tt>index &lt; 0 || index &gt;= size()</tt>)
      */
     @Override
-    public T get(int index) {
+    public E get(int index) {
         //TODO бросить исключение если выход за length
         return items[index];
     }
+
 
     // TODO
 
@@ -468,15 +399,12 @@ public class MyArrayList<T> implements List<T> {
      *                                       (<tt>index &lt; 0 || index &gt;= size()</tt>)
      */
     @Override
-    public T set(int index, T element) {
+    public E set(int index, E element) {
         //TODO бросить исключение если выход за length
-        T temp = items[index];
+        E temp = items[index];
         items[index] = element;
         return temp;
     }
-
-
-    // TODO
 
     /**
      * Inserts the specified element at the specified position in this list
@@ -498,10 +426,9 @@ public class MyArrayList<T> implements List<T> {
      *                                       (<tt>index &lt; 0 || index &gt; size()</tt>)
      */
     @Override
-    public void add(int index, T element) {
+    public void add(int index, E element) {
 
     }
-
 
     // TODO
 
@@ -519,7 +446,7 @@ public class MyArrayList<T> implements List<T> {
      *                                       (<tt>index &lt; 0 || index &gt;= size()</tt>)
      */
     @Override
-    public T remove(int index) {
+    public E remove(int index) {
         return null;
     }
 
@@ -584,7 +511,7 @@ public class MyArrayList<T> implements List<T> {
      * sequence)
      */
     @Override
-    public ListIterator<T> listIterator() {
+    public ListIterator<E> listIterator() {
         return null;
     }
 
@@ -607,14 +534,19 @@ public class MyArrayList<T> implements List<T> {
      *                                   ({@code index < 0 || index > size()})
      */
     @Override
-    public ListIterator<T> listIterator(int index) {
+    public ListIterator<E> listIterator(int index) {
         return null;
     }
 
 
     // TODO
+
+    // TODO
     public void ensureCapacity() {
     }
+
+
+    // TODO
 
     // TODO
     public void trimToSize() {
@@ -622,7 +554,84 @@ public class MyArrayList<T> implements List<T> {
 
     // Метод sublist реализовывать не нужно
     @Override
-    public List<T> subList(int fromIndex, int toIndex) {
+    public List<E> subList(int fromIndex, int toIndex) {
         return null;
+    }
+
+    private class MyIterator implements Iterator<E> {
+        private int index;
+
+        public MyIterator(int index) {
+            this.index = index;
+        }
+
+        // TODO подумать - какую сделатьп роверку
+        @Override
+        public boolean hasNext() {
+            return index != length;
+        }
+
+        @Override
+        public E next() {
+            return null;
+        }
+
+        @Override
+        public void remove() {
+
+        }
+
+        @Override
+        public void forEachRemaining(Consumer<? super E> consumer) {
+
+        }
+    }
+
+    private class MyListIterator implements ListIterator<E> {
+
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public E next() {
+            return null;
+        }
+
+        @Override
+        public boolean hasPrevious() {
+            return false;
+        }
+
+        @Override
+        public E previous() {
+            return null;
+        }
+
+        @Override
+        public int nextIndex() {
+            return 0;
+        }
+
+        @Override
+        public int previousIndex() {
+            return 0;
+        }
+
+        @Override
+        public void remove() {
+
+        }
+
+        @Override
+        public void set(E e) {
+
+        }
+
+        @Override
+        public void add(E e) {
+
+        }
     }
 }
