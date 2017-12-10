@@ -8,17 +8,20 @@ import java.util.function.Consumer;
 
 public class MyArrayList<E> implements List<E> {
     private static final int DEFAULT_CAPACITY = 10;
-    private final E[] EMPTY_ITEMS={};
-    private E[] items = (E[]) new Object[10];
-    private int length;
+    private final E[] EMPTY_ITEMS = null; // TODO ????
+    private E[] items;
+    //            = (E[]) new Object[10];
+    private int size;
 
     public MyArrayList(int capacity) {
         if (capacity > 0) {
-            items = (E[]) new Object[length];
-        }else if (capacity==0){
-            items=
+            items = (E[]) new Object[capacity];
+        } else if (capacity == 0) {
+            items = EMPTY_ITEMS;
+        } else {
+            throw new IllegalArgumentException("Illegal capacity: " +
+                    capacity);
         }
-        this.length = length;
     }
 
     /**
@@ -30,7 +33,7 @@ public class MyArrayList<E> implements List<E> {
      */
     @Override
     public int size() {
-        return length;
+        return size;
     }
 
     /**
@@ -40,7 +43,7 @@ public class MyArrayList<E> implements List<E> {
      */
     @Override
     public boolean isEmpty() {
-        return length == 0;
+        return size == 0;
     }
 
     /**
@@ -360,9 +363,6 @@ public class MyArrayList<E> implements List<E> {
 
     }
 
-
-    // TODO
-
     /**
      * Returns the element at the specified position in this list.
      *
@@ -373,7 +373,9 @@ public class MyArrayList<E> implements List<E> {
      */
     @Override
     public E get(int index) {
-        //TODO бросить исключение если выход за length
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
         return items[index];
     }
 
@@ -400,7 +402,9 @@ public class MyArrayList<E> implements List<E> {
      */
     @Override
     public E set(int index, E element) {
-        //TODO бросить исключение если выход за length
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
         E temp = items[index];
         items[index] = element;
         return temp;
@@ -565,10 +569,10 @@ public class MyArrayList<E> implements List<E> {
             this.index = index;
         }
 
-        // TODO подумать - какую сделатьп роверку
+        // TODO подумать - какую сделать проверку
         @Override
         public boolean hasNext() {
-            return index != length;
+            return index != size;
         }
 
         @Override
