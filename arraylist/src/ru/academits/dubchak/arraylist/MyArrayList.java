@@ -8,19 +8,22 @@ import java.util.function.Consumer;
 
 public class MyArrayList<E> implements List<E> {
     private static final int DEFAULT_CAPACITY = 10;
-    private final E[] EMPTY_ITEMS = null; // TODO ????
-    private E[] items;
-    //            = (E[]) new Object[10];
+    private final E[] EMPTY_ITEMS = (E[]) new Object[0];
+    private final E[] DEFAULT_CAPACITY_EMPTY_ITEMS = (E[]) new Object[0];
+    transient E[] items;
     private int size;
+
+    public MyArrayList() {
+        this.items = DEFAULT_CAPACITY_EMPTY_ITEMS;
+    }
 
     public MyArrayList(int capacity) {
         if (capacity > 0) {
             items = (E[]) new Object[capacity];
-        } else if (capacity == 0) {
-            items = EMPTY_ITEMS;
+        } else if (capacity != 0) {
+            throw new IllegalArgumentException("Illegal capacity: " + capacity);
         } else {
-            throw new IllegalArgumentException("Illegal capacity: " +
-                    capacity);
+            this.items = EMPTY_ITEMS;
         }
     }
 
