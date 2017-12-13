@@ -66,7 +66,7 @@ public class MyArrayList<E> implements List<E> {
      */
     @Override
     public boolean contains(Object o) {
-        return false;
+        return this.indexOf(o) >= 0;
     }
 
     /**
