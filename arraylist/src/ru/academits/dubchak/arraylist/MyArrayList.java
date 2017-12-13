@@ -12,6 +12,7 @@ public class MyArrayList<E> implements List<E> {
     private final E[] DEFAULT_CAPACITY_EMPTY_ITEMS = (E[]) new Object[0];
     transient E[] items;
     private int size;
+    private int modCount;
 
     public MyArrayList() {
         this.items = DEFAULT_CAPACITY_EMPTY_ITEMS;
@@ -76,7 +77,7 @@ public class MyArrayList<E> implements List<E> {
      */
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return new MyIterator();
     }
 
     // TODO
@@ -565,17 +566,12 @@ public class MyArrayList<E> implements List<E> {
         return null;
     }
 
+    // TODO внутренний класс итератор
     private class MyIterator implements Iterator<E> {
-        private int index;
 
-        public MyIterator(int index) {
-            this.index = index;
-        }
-
-        // TODO подумать - какую сделать проверку
         @Override
         public boolean hasNext() {
-            return index != size;
+            return false;
         }
 
         @Override
