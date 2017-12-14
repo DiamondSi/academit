@@ -348,9 +348,6 @@ public class MyArrayList<E> implements List<E> {
         return items[index];
     }
 
-
-    // TODO
-
     /**
      * Replaces the element at the specified position in this list with the
      * specified element (optional operation).
@@ -371,7 +368,7 @@ public class MyArrayList<E> implements List<E> {
      */
     @Override
     public E set(int index, E element) {
-        if (index < 0 || index > size) {
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException(Integer.toString(index));
         }
         E temp = items[index];
