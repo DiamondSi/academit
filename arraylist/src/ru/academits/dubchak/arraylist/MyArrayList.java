@@ -1,9 +1,6 @@
 package ru.academits.dubchak.arraylist;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 import java.util.function.Consumer;
 
 public class MyArrayList<E> implements List<E> {
@@ -80,8 +77,6 @@ public class MyArrayList<E> implements List<E> {
         return new MyIterator();
     }
 
-    // TODO
-
     /**
      * Returns an array containing all of the elements in this list in proper
      * sequence (from first to last element).
@@ -100,7 +95,7 @@ public class MyArrayList<E> implements List<E> {
      */
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        return Arrays.copyOf(this.items, this.size);
     }
 
     // TODO
