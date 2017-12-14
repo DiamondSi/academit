@@ -530,73 +530,83 @@ public class MyArrayList<E> implements List<E> {
 
     // TODO внутренний класс итератор
     private class MyIterator implements Iterator<E> {
+        int cursor;
+        int currentIndex = -1;
+        int expectedModCount = modCount;
 
         @Override
         public boolean hasNext() {
-            return false;
+            return this.cursor != MyArrayList.this.size;
         }
 
+        // TODO
         @Override
         public E next() {
             return null;
         }
 
+        // TODO
         @Override
         public void remove() {
-
         }
 
+        // TODO
         @Override
         public void forEachRemaining(Consumer<? super E> consumer) {
-
         }
     }
 
+    // TODO внутренний класс Лист-Итератор
     private class MyListIterator implements ListIterator<E> {
-
+        // TODO
         @Override
         public boolean hasNext() {
             return false;
         }
 
+        // TODO
         @Override
         public E next() {
             return null;
         }
 
+        // TODO
         @Override
         public boolean hasPrevious() {
             return false;
         }
 
+        // TODO
         @Override
         public E previous() {
             return null;
         }
 
+        // TODO
         @Override
         public int nextIndex() {
             return 0;
         }
 
+        // TODO
         @Override
         public int previousIndex() {
             return 0;
         }
 
+        // TODO
         @Override
         public void remove() {
-
         }
 
+        // TODO
         @Override
         public void set(E e) {
-
         }
 
+        // TODO
         @Override
         public void add(E e) {
-
         }
     }
 }
