@@ -98,50 +98,20 @@ public class MyArrayList<E> implements List<E> {
         return Arrays.copyOf(this.items, this.size);
     }
 
-    // TODO
-
-    /**
-     * Returns an array containing all of the elements in this list in
-     * proper sequence (from first to last element); the runtime type of
-     * the returned array is that of the specified array.  If the list fits
-     * in the specified array, it is returned therein.  Otherwise, a new
-     * array is allocated with the runtime type of the specified array and
-     * the size of this list.
-     * <p>
-     * <p>If the list fits in the specified array with room to spare (i.e.,
-     * the array has more elements than the list), the element in the array
-     * immediately following the end of the list is set to <tt>null</tt>.
-     * (This is useful in determining the length of the list <i>only</i> if
-     * the caller knows that the list does not contain any null elements.)
-     * <p>
-     * <p>Like the {@link #toArray()} method, this method acts as bridge between
-     * array-based and collection-based APIs.  Further, this method allows
-     * precise control over the runtime type of the output array, and may,
-     * under certain circumstances, be used to save allocation costs.
-     * <p>
-     * <p>Suppose <tt>x</tt> is a list known to contain only strings.
-     * The following code can be used to dump the list into a newly
-     * allocated array of <tt>String</tt>:
-     * <p>
-     * <pre>{@code
-     *     String[] y = x.toArray(new String[0]);
-     * }</pre>
-     * <p>
-     * Note that <tt>toArray(new Object[0])</tt> is identical in function to
-     * <tt>toArray()</tt>.
-     *
-     * @param a the array into which the elements of this list are to
-     *          be stored, if it is big enough; otherwise, a new array of the
-     *          same runtime type is allocated for this purpose.
-     * @return an array containing the elements of this list
-     * @throws ArrayStoreException  if the runtime type of the specified array
-     *                              is not a supertype of the runtime type of every element in
-     *                              this list
-     * @throws NullPointerException if the specified array is null
-     */
+    // копируем список в переданный аргументом массив-приемник,
+    // если массив-приемник меньше - создаем новый массив нужной длины
+    // если массив-преимник длинее списка, тозаполняем лишние элементы массива значением null TODO не понимаю как это работает, надо протестировать
     @Override
-    public <E1> E1[] toArray(E1[] a) {
-        return null;
+    public <E1> E1[] toArray(E1[] array) {
+        if (array.length < this.size) {
+            return (E1[]) Arrays.copyOf(items, size, array.getClass());
+        } else {
+            System.arraycopy(this.items, 0, array, 0, this.size);
+            if (array.length > this.size) {
+                array[this.size] = null;
+            }
+            return array;
+        }
     }
 
 
