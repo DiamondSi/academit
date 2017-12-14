@@ -537,12 +537,14 @@ public class MyArrayList<E> implements List<E> {
         @Override
         public boolean hasNext() {
             return this.cursor != MyArrayList.this.size;
+//            return currentIndex + 1 < size;
         }
 
         // TODO
         @Override
         public E next() {
-            return null;
+            ++currentIndex;
+            return items[currentIndex];
         }
 
         // TODO
