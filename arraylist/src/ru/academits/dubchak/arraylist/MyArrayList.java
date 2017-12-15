@@ -542,9 +542,14 @@ public class MyArrayList<E> implements List<E> {
             return currentIndex + 1 < size;
         }
 
-        // TODO
         @Override
         public E next() {
+            if (initialModCount != modCount) {
+                throw new ConcurrentModificationException();
+            }
+            if (currentIndex + 1 > size) {
+                throw new NoSuchElementException();
+            }
             ++currentIndex;
             return items[currentIndex];
         }
