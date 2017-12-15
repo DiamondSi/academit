@@ -540,7 +540,6 @@ public class MyArrayList<E> implements List<E> {
 
     // TODO внутренний класс итератор
     private class MyIterator implements Iterator<E> {
-        int cursor;
         int currentIndex = -1;
         int initialModCount = modCount;
 
