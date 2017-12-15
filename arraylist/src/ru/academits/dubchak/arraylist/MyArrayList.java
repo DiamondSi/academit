@@ -572,9 +572,10 @@ public class MyArrayList<E> implements List<E> {
             initialModCount = modCount;
         }
 
-        // TODO
+        // не надо реализовывать
         @Override
         public void forEachRemaining(Consumer<? super E> consumer) {
+            return;
         }
     }
 
