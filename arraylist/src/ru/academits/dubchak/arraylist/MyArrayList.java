@@ -532,12 +532,14 @@ public class MyArrayList<E> implements List<E> {
     private class MyIterator implements Iterator<E> {
         int cursor;
         int currentIndex = -1;
-        int expectedModCount = modCount;
+        int initialModCount = modCount;
 
         @Override
         public boolean hasNext() {
-            return this.cursor != MyArrayList.this.size;
-//            return currentIndex + 1 < size;
+            if (initialModCount != modCount) {
+                throw new ConcurrentModificationException();
+            }
+            return currentIndex + 1 < size;
         }
 
         // TODO
