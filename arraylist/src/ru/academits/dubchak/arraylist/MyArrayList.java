@@ -417,7 +417,17 @@ public class MyArrayList<E> implements List<E> {
      */
     @Override
     public E remove(int index) {
-        return null;
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
+        if (index < size - 1) {
+            System.arraycopy(items, index + 1, items, index, size - index - 1);
+        }
+        E temp = items[index];
+        items[size] = null;
+        --size;
+        ++modCount;
+        return temp;
     }
 
 
@@ -554,9 +564,13 @@ public class MyArrayList<E> implements List<E> {
             return items[currentIndex];
         }
 
-        // TODO
         @Override
         public void remove() {
+            if (initialModCount != modCount) {
+                throw new ConcurrentModificationException();
+            }
+            MyArrayList.this.remove(currentIndex);
+            initialModCount = modCount;
         }
 
         // TODO
