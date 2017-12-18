@@ -598,10 +598,9 @@ public class MyArrayList<E> implements List<E> {
             return items[currentIndex];
         }
 
-        // TODO
         @Override
         public int nextIndex() {
-            return 0;
+            return currentIndex + 1;
         }
 
         // TODO
