@@ -573,7 +573,6 @@ public class MyArrayList<E> implements List<E> {
         }
     }
 
-    // TODO внутренний класс Лист-Итератор
     private class MyListIterator extends MyIterator implements ListIterator<E> {
         private int currentIndex = -1;
         private int initialModCount = modCount;
