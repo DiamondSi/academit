@@ -613,10 +613,10 @@ public class MyArrayList<E> implements List<E> {
             items[currentIndex] = e;
         }
 
-        // TODO
         @Override
         public void add(E e) {
-
+            MyArrayList.this.add(currentIndex, e);
+            initialModCount = modCount;
         }
     }
 }
