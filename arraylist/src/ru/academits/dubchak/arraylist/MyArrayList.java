@@ -608,10 +608,9 @@ public class MyArrayList<E> implements List<E> {
             return currentIndex - 1;
         }
 
-        // TODO
         @Override
         public void set(E e) {
-
+            items[currentIndex] = e;
         }
 
         // TODO
