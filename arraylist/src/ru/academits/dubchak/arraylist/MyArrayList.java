@@ -603,10 +603,9 @@ public class MyArrayList<E> implements List<E> {
             return currentIndex + 1;
         }
 
-        // TODO
         @Override
         public int previousIndex() {
-            return 0;
+            return currentIndex - 1;
         }
 
         // TODO
