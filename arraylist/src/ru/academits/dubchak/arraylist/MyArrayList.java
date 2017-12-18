@@ -520,13 +520,8 @@ public class MyArrayList<E> implements List<E> {
 
 
     // TODO
-
-    // TODO
     public void ensureCapacity() {
     }
-
-
-    // TODO
 
     // TODO
     public void trimToSize() {
@@ -591,10 +586,16 @@ public class MyArrayList<E> implements List<E> {
             return currentIndex - 1 >= 0;
         }
 
-        // TODO
         @Override
         public E previous() {
-            return null;
+            if (initialModCount != modCount) {
+                throw new ConcurrentModificationException();
+            }
+            if (currentIndex - 1 < 0) {
+                throw new NoSuchElementException();
+            }
+            --currentIndex;
+            return items[currentIndex];
         }
 
         // TODO
