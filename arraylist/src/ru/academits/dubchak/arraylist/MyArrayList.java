@@ -25,74 +25,26 @@ public class MyArrayList<E> implements List<E> {
         }
     }
 
-    /**
-     * Returns the number of elements in this list.  If this list contains
-     * more than <tt>Integer.MAX_VALUE</tt> elements, returns
-     * <tt>Integer.MAX_VALUE</tt>.
-     *
-     * @return the number of elements in this list
-     */
     @Override
     public int size() {
         return size;
     }
 
-    /**
-     * Returns <tt>true</tt> if this list contains no elements.
-     *
-     * @return <tt>true</tt> if this list contains no elements
-     */
     @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
-    /**
-     * Returns <tt>true</tt> if this list contains the specified element.
-     * More formally, returns <tt>true</tt> if and only if this list contains
-     * at least one element <tt>e</tt> such that
-     * <tt>(o==null&nbsp;?&nbsp;e==null&nbsp;:&nbsp;o.equals(e))</tt>.
-     *
-     * @param o element whose presence in this list is to be tested
-     * @return <tt>true</tt> if this list contains the specified element
-     * @throws ClassCastException   if the type of the specified element
-     *                              is incompatible with this list
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified element is null and this
-     *                              list does not permit null elements
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     */
     @Override
     public boolean contains(Object o) {
         return this.indexOf(o) >= 0;
     }
 
-    /**
-     * Returns an iterator over the elements in this list in proper sequence.
-     *
-     * @return an iterator over the elements in this list in proper sequence
-     */
     @Override
     public Iterator<E> iterator() {
         return new MyIterator();
     }
 
-    /**
-     * Returns an array containing all of the elements in this list in proper
-     * sequence (from first to last element).
-     * <p>
-     * <p>The returned array will be "safe" in that no references to it are
-     * maintained by this list.  (In other words, this method must
-     * allocate a new array even if this list is backed by an array).
-     * The caller is thus free to modify the returned array.
-     * <p>
-     * <p>This method acts as bridge between array-based and collection-based
-     * APIs.
-     *
-     * @return an array containing all of the elements in this list in proper
-     * sequence
-     * //     * @see Arrays#asList(Object[])
-     */
     @Override
     public Object[] toArray() {
         return Arrays.copyOf(this.items, this.size);
@@ -299,14 +251,6 @@ public class MyArrayList<E> implements List<E> {
 
     }
 
-    /**
-     * Returns the element at the specified position in this list.
-     *
-     * @param index index of the element to return
-     * @return the element at the specified position in this list
-     * @throws IndexOutOfBoundsException if the index is out of range
-     *                                   (<tt>index &lt; 0 || index &gt;= size()</tt>)
-     */
     @Override
     public E get(int index) {
         if (index < 0 || index > size) {
@@ -315,24 +259,6 @@ public class MyArrayList<E> implements List<E> {
         return items[index];
     }
 
-    /**
-     * Replaces the element at the specified position in this list with the
-     * specified element (optional operation).
-     *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws UnsupportedOperationException if the <tt>set</tt> operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this list
-     * @throws NullPointerException          if the specified element is null and
-     *                                       this list does not permit null elements
-     * @throws IllegalArgumentException      if some property of the specified
-     *                                       element prevents it from being added to this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       (<tt>index &lt; 0 || index &gt;= size()</tt>)
-     */
     @Override
     public E set(int index, E element) {
         if (index < 0 || index >= size) {
@@ -342,6 +268,8 @@ public class MyArrayList<E> implements List<E> {
         items[index] = element;
         return temp;
     }
+
+    // TODO
 
     /**
      * Inserts the specified element at the specified position in this list
@@ -367,21 +295,6 @@ public class MyArrayList<E> implements List<E> {
 
     }
 
-    // TODO
-
-    /**
-     * Removes the element at the specified position in this list (optional
-     * operation).  Shifts any subsequent elements to the left (subtracts one
-     * from their indices).  Returns the element that was removed from the
-     * list.
-     *
-     * @param index the index of the element to be removed
-     * @return the element previously at the specified position
-     * @throws UnsupportedOperationException if the <tt>remove</tt> operation
-     *                                       is not supported by this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       (<tt>index &lt; 0 || index &gt;= size()</tt>)
-     */
     @Override
     public E remove(int index) {
         if (index < 0 || index >= size) {
