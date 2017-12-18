@@ -538,7 +538,6 @@ public class MyArrayList<E> implements List<E> {
         return null;
     }
 
-    // TODO внутренний класс итератор
     private class MyIterator implements Iterator<E> {
         int currentIndex = -1;
         int initialModCount = modCount;
@@ -580,23 +579,16 @@ public class MyArrayList<E> implements List<E> {
     }
 
     // TODO внутренний класс Лист-Итератор
-    private class MyListIterator implements ListIterator<E> {
-        // TODO
-        @Override
-        public boolean hasNext() {
-            return false;
-        }
+    private class MyListIterator extends MyIterator implements ListIterator<E> {
+        private int currentIndex = -1;
+        private int initialModCount = modCount;
 
-        // TODO
-        @Override
-        public E next() {
-            return null;
-        }
-
-        // TODO
         @Override
         public boolean hasPrevious() {
-            return false;
+            if (initialModCount != modCount) {
+                throw new ConcurrentModificationException();
+            }
+            return currentIndex - 1 >= 0;
         }
 
         // TODO
@@ -619,17 +611,14 @@ public class MyArrayList<E> implements List<E> {
 
         // TODO
         @Override
-        public void remove() {
-        }
-
-        // TODO
-        @Override
         public void set(E e) {
+
         }
 
         // TODO
         @Override
         public void add(E e) {
+
         }
     }
 }
