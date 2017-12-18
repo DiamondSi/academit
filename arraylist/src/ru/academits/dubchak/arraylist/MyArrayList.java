@@ -125,11 +125,7 @@ public class MyArrayList<E> implements List<E> {
         return true;
     }
 
-    // TODO
     private void increaseCapacity() {
-//        E[] old = items;
-//        items = (E[]) new Object[old.length * 2];
-//        System.arraycopy(old, 0, items, 0, old.length);
         items = Arrays.copyOf(items, items.length * 2);
     }
 
