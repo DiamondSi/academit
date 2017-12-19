@@ -92,30 +92,14 @@ public class MyArrayList<E> implements List<E> {
         return false;
     }
 
-
-    // TODO
-
-    /**
-     * Returns <tt>true</tt> if this list contains all of the elements of the
-     * specified collection.
-     *
-     * @param c collection to be checked for containment in this list
-     * @return <tt>true</tt> if this list contains all of the elements of the
-     * specified collection
-     * @throws ClassCastException   if the types of one or more elements
-     *                              in the specified collection are incompatible with this
-     *                              list
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified collection contains one
-     *                              or more null elements and this list does not permit null
-     *                              elements
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>),
-     *                              or if the specified collection is null
-     * @see #contains(Object)
-     */
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
+        for (Object object : c) {
+            if (!this.contains(c)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
