@@ -236,19 +236,13 @@ public class MyArrayList<E> implements List<E> {
         return false;
     }
 
-
-    // TODO
-
-    /**
-     * Removes all of the elements from this list (optional operation).
-     * The list will be empty after this call returns.
-     *
-     * @throws UnsupportedOperationException if the <tt>clear</tt> operation
-     *                                       is not supported by this list
-     */
     @Override
     public void clear() {
-
+        ++modCount;
+        for (int i = 0; i < size; i++) {
+            items[i] = null;
+        }
+        size = 0;
     }
 
     @Override
