@@ -295,19 +295,9 @@ public class MyArrayList<E> implements List<E> {
         return -1;
     }
 
-
-    // TODO
-
-    /**
-     * Returns a list iterator over the elements in this list (in proper
-     * sequence).
-     *
-     * @return a list iterator over the elements in this list (in proper
-     * sequence)
-     */
     @Override
     public ListIterator<E> listIterator() {
-        return null;
+        return new MyListIterator();
     }
 
 
