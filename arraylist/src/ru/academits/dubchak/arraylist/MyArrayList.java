@@ -300,27 +300,12 @@ public class MyArrayList<E> implements List<E> {
         return new MyListIterator();
     }
 
-
-    // TODO
-
-    /**
-     * Returns a list iterator over the elements in this list (in proper
-     * sequence), starting at the specified position in the list.
-     * The specified index indicates the first element that would be
-     * returned by an initial call to {@link ListIterator#next next}.
-     * An initial call to {@link ListIterator#previous previous} would
-     * return the element with the specified index minus one.
-     *
-     * @param index index of the first element to be returned from the
-     *              list iterator (by a call to {@link ListIterator#next next})
-     * @return a list iterator over the elements in this list (in proper
-     * sequence), starting at the specified position in the list
-     * @throws IndexOutOfBoundsException if the index is out of range
-     *                                   ({@code index < 0 || index > size()})
-     */
     @Override
     public ListIterator<E> listIterator(int index) {
-        return null;
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
+        return new MyListIterator(index);
     }
 
 
@@ -381,6 +366,13 @@ public class MyArrayList<E> implements List<E> {
     private class MyListIterator extends MyIterator implements ListIterator<E> {
         private int currentIndex = -1;
         private int initialModCount = modCount;
+
+        public MyListIterator() {
+        }
+
+        public MyListIterator(int index) {
+            this.currentIndex = index;
+        }
 
         @Override
         public boolean hasPrevious() {
