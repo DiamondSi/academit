@@ -313,8 +313,11 @@ public class MyArrayList<E> implements List<E> {
     public void ensureCapacity() {
     }
 
-    // TODO
     public void trimToSize() {
+        ++modCount;
+        if (size < items.length) {
+            items = size == 0 ? EMPTY_ITEMS : Arrays.copyOf(items, size);
+        }
     }
 
     // Метод sublist реализовывать не нужно
