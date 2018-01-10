@@ -308,9 +308,11 @@ public class MyArrayList<E> implements List<E> {
         return new MyListIterator(index);
     }
 
-
-    // TODO
-    public void ensureCapacity() {
+    public void ensureCapacity(int minCapacity) {
+        if (items.length < minCapacity) {
+            ++modCount;
+            items = Arrays.copyOf(items, minCapacity);
+        }
     }
 
     public void trimToSize() {
