@@ -107,39 +107,25 @@ public class MyArrayList<E> implements List<E> {
         return this.addAll(this.size, c);
     }
 
-
-    // TODO
-
-    /**
-     * Inserts all of the elements in the specified collection into this
-     * list at the specified position (optional operation).  Shifts the
-     * element currently at that position (if any) and any subsequent
-     * elements to the right (increases their indices).  The new elements
-     * will appear in this list in the order that they are returned by the
-     * specified collection's iterator.  The behavior of this operation is
-     * undefined if the specified collection is modified while the
-     * operation is in progress.  (Note that this will occur if the specified
-     * collection is this list, and it's nonempty.)
-     *
-     * @param index index at which to insert the first element from the
-     *              specified collection
-     * @param c     collection containing elements to be added to this list
-     * @return <tt>true</tt> if this list changed as a result of the call
-     * @throws UnsupportedOperationException if the <tt>addAll</tt> operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of an element of the specified
-     *                                       collection prevents it from being added to this list
-     * @throws NullPointerException          if the specified collection contains one
-     *                                       or more null elements and this list does not permit null
-     *                                       elements, or if the specified collection is null
-     * @throws IllegalArgumentException      if some property of an element of the
-     *                                       specified collection prevents it from being added to this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       (<tt>index &lt; 0 || index &gt; size()</tt>)
-     */
     @Override
     public boolean addAll(int index, Collection<? extends E> c) {
-        return false;
+        rangeCheckForAdd(index);
+        if (c.size() == 0) {
+            return false;
+        }
+        ensureCapacity(size + c.size());
+        int movingLentgh = size - index;
+        if (movingLentgh > 0) {
+            System.arraycopy(items, index, items, index + c.size(), movingLentgh);
+        }
+        int i = index;
+        for (E collectionItem : c) {
+            items[i] = collectionItem;
+            ++i;
+            ++modCount;
+        }
+        size += c.size();
+        return true;
     }
 
 
@@ -207,17 +193,13 @@ public class MyArrayList<E> implements List<E> {
 
     @Override
     public E get(int index) {
-        if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException(Integer.toString(index));
-        }
+        rangeCheck(index);
         return items[index];
     }
 
     @Override
     public E set(int index, E element) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException(Integer.toString(index));
-        }
+        rangeCheck(index);
         E temp = items[index];
         items[index] = element;
         return temp;
@@ -225,9 +207,7 @@ public class MyArrayList<E> implements List<E> {
 
     @Override
     public void add(int index, E element) {
-        if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException(Integer.toString(index));
-        }
+        rangeCheckForAdd(index);
         ++size;
         if (size > items.length) {
             increaseCapacity();
@@ -238,9 +218,7 @@ public class MyArrayList<E> implements List<E> {
 
     @Override
     public E remove(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException(Integer.toString(index));
-        }
+        rangeCheck(index);
         if (index < size - 1) {
             System.arraycopy(items, index + 1, items, index, size - index - 1);
         }
@@ -278,6 +256,7 @@ public class MyArrayList<E> implements List<E> {
 
     @Override
     public ListIterator<E> listIterator(int index) {
+        //TODO подумать как лучше проверить index на IndexOutOfBoundsException
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException(Integer.toString(index));
         }
@@ -295,6 +274,18 @@ public class MyArrayList<E> implements List<E> {
         ++modCount;
         if (size < items.length) {
             items = size == 0 ? EMPTY_ITEMS : Arrays.copyOf(items, size);
+        }
+    }
+
+    private void rangeCheck(int index) {
+        if (index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+    }
+
+    private void rangeCheckForAdd(int index) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
     }
 
