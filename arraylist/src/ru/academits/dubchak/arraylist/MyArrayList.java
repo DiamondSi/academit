@@ -128,30 +128,17 @@ public class MyArrayList<E> implements List<E> {
         return true;
     }
 
-
-    // TODO
-
-    /**
-     * Removes from this list all of its elements that are contained in the
-     * specified collection (optional operation).
-     *
-     * @param c collection containing elements to be removed from this list
-     * @return <tt>true</tt> if this list changed as a result of the call
-     * @throws UnsupportedOperationException if the <tt>removeAll</tt> operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of an element of this list
-     *                                       is incompatible with the specified collection
-     *                                       (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException          if this list contains a null element and the
-     *                                       specified collection does not permit null elements
-     *                                       (<a href="Collection.html#optional-restrictions">optional</a>),
-     *                                       or if the specified collection is null
-     * @see #remove(Object)
-     * @see #contains(Object)
-     */
     @Override
     public boolean removeAll(Collection<?> c) {
-        return false;
+        Objects.requireNonNull(c);
+        int expectedModCount = modCount;
+        for (int i = 0; i < size; i++) {
+            if (c.contains(items[i])) {
+                this.remove(i);
+                --i;
+            }
+        }
+        return expectedModCount != modCount;
     }
 
 
