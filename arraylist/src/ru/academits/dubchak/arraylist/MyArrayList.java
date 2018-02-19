@@ -50,9 +50,6 @@ public class MyArrayList<E> implements List<E> {
         return Arrays.copyOf(this.items, this.size);
     }
 
-    // копируем список в переданный аргументом массив-приемник,
-    // если массив-приемник меньше - создаем новый массив нужной длины
-    // если массив-приемник длинее списка, тозаполняем лишние элементы массива значением null TODO не понимаю как это работает, надо протестировать
     @Override
     public <E1> E1[] toArray(E1[] array) {
         if (array.length < this.size) {
@@ -141,32 +138,17 @@ public class MyArrayList<E> implements List<E> {
         return expectedModCount != modCount;
     }
 
-
-    // TODO
-
-    /**
-     * Retains only the elements in this list that are contained in the
-     * specified collection (optional operation).  In other words, removes
-     * from this list all of its elements that are not contained in the
-     * specified collection.
-     *
-     * @param c collection containing elements to be retained in this list
-     * @return <tt>true</tt> if this list changed as a result of the call
-     * @throws UnsupportedOperationException if the <tt>retainAll</tt> operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of an element of this list
-     *                                       is incompatible with the specified collection
-     *                                       (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException          if this list contains a null element and the
-     *                                       specified collection does not permit null elements
-     *                                       (<a href="Collection.html#optional-restrictions">optional</a>),
-     *                                       or if the specified collection is null
-     * @see #remove(Object)
-     * @see #contains(Object)
-     */
     @Override
     public boolean retainAll(Collection<?> c) {
-        return false;
+        Objects.requireNonNull(c);
+        int expectedModCount = modCount;
+        for (int i = 0; i < size; i++) {
+            if (!c.contains(items[i])) {
+                this.remove(i);
+                --i;
+            }
+        }
+        return expectedModCount != modCount;
     }
 
     @Override
@@ -243,7 +225,6 @@ public class MyArrayList<E> implements List<E> {
 
     @Override
     public ListIterator<E> listIterator(int index) {
-        //TODO подумать как лучше проверить index на IndexOutOfBoundsException
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException(Integer.toString(index));
         }

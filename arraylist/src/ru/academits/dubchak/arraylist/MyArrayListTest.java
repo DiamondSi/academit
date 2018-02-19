@@ -1,114 +1,118 @@
 package ru.academits.dubchak.arraylist;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class MyArrayListTest {
-
-    @org.junit.Before
+    @Before
     public void setUp() throws Exception {
     }
 
-    @org.junit.After
+    @After
     public void tearDown() throws Exception {
     }
 
-    @org.junit.Test
-    public void size() {
+    @Test
+    public void size() throws Exception {
     }
 
-    @org.junit.Test
-    public void isEmpty() {
+    @Test
+    public void isEmpty() throws Exception {
     }
 
-    @org.junit.Test
-    public void contains() {
+    @Test
+    public void contains() throws Exception {
     }
 
-    @org.junit.Test
-    public void iterator() {
+    @Test
+    public void iterator() throws Exception {
     }
 
-    @org.junit.Test
-    public void toArray() {
+    @Test
+    public void toArray() throws Exception {
     }
 
-    @org.junit.Test
-    public void toArray1() {
+    @Test
+    public void toArray1() throws Exception {
     }
 
-    @org.junit.Test
-    public void add() {
+    @Test
+    public void add() throws Exception {
     }
 
-    @org.junit.Test
-    public void remove() {
+    @Test
+    public void remove() throws Exception {
     }
 
-    @org.junit.Test
-    public void containsAll() {
+    @Test
+    public void containsAll() throws Exception {
     }
 
-    @org.junit.Test
-    public void addAll() {
+    @Test
+    public void addAll() throws Exception {
     }
 
-    @org.junit.Test
-    public void addAll1() {
+    @Test
+    public void addAll1() throws Exception {
     }
 
-    @org.junit.Test
-    public void removeAll() {
+    @Test
+    public void removeAll() throws Exception {
     }
 
-    @org.junit.Test
-    public void retainAll() {
+    @Test
+    public void retainAll() throws Exception {
     }
 
-    @org.junit.Test
-    public void clear() {
+    @Test
+    public void clear() throws Exception {
     }
 
-    @org.junit.Test
-    public void get() {
+    @Test
+    public void get() throws Exception {
     }
 
-    @org.junit.Test
-    public void set() {
+    @Test
+    public void set() throws Exception {
     }
 
-    @org.junit.Test
-    public void add1() {
+    @Test
+    public void add1() throws Exception {
     }
 
-    @org.junit.Test
-    public void remove1() {
+    @Test
+    public void remove1() throws Exception {
     }
 
-    @org.junit.Test
-    public void indexOf() {
+    @Test
+    public void indexOf() throws Exception {
     }
 
-    @org.junit.Test
-    public void lastIndexOf() {
+    @Test
+    public void lastIndexOf() throws Exception {
     }
 
-    @org.junit.Test
-    public void listIterator() {
+    @Test
+    public void listIterator() throws Exception {
     }
 
-    @org.junit.Test
-    public void listIterator1() {
+    @Test
+    public void listIterator1() throws Exception {
     }
 
-    @org.junit.Test
-    public void ensureCapacity() {
+    @Test
+    public void ensureCapacity() throws Exception {
     }
 
-    @org.junit.Test
-    public void trimToSize() {
+    @Test
+    public void trimToSize() throws Exception {
     }
 
-    @org.junit.Test
-    public void subList() {
+    @Test
+    public void subList() throws Exception {
     }
+
 }
