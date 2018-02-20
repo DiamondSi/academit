@@ -4,25 +4,22 @@ import java.util.*;
 import java.util.function.Consumer;
 
 public class MyArrayList<E> implements List<E> {
-    private static final int DEFAULT_CAPACITY = 10;
-    private final E[] EMPTY_ITEMS = (E[]) new Object[0];
-    private final E[] DEFAULT_CAPACITY_EMPTY_ITEMS = (E[]) new Object[0];
-    transient E[] items;
+    private E[] items;
     private int size;
     private int modCount;
+    private static final int DEFAULT_CAPACITY = 10;
 
     public MyArrayList() {
-        this.items = DEFAULT_CAPACITY_EMPTY_ITEMS;
+        //noinspection unchecked
+        this.items = (E[]) new Object[DEFAULT_CAPACITY];
     }
 
     public MyArrayList(int capacity) {
-        if (capacity > 0) {
-            items = (E[]) new Object[capacity];
-        } else if (capacity != 0) {
+        if (capacity < 0) {
             throw new IllegalArgumentException("Illegal capacity: " + capacity);
-        } else {
-            this.items = EMPTY_ITEMS;
         }
+        //noinspection unchecked
+        this.items = (E[]) new Object[capacity];
     }
 
     @Override
@@ -53,8 +50,10 @@ public class MyArrayList<E> implements List<E> {
     @Override
     public <E1> E1[] toArray(E1[] array) {
         if (array.length < this.size) {
+            //noinspection unchecked
             return (E1[]) Arrays.copyOf(items, size, array.getClass());
         } else {
+            //noinspection SuspiciousSystemArraycopy
             System.arraycopy(this.items, 0, array, 0, this.size);
             if (array.length > this.size) {
                 array[this.size] = null;
@@ -91,8 +90,9 @@ public class MyArrayList<E> implements List<E> {
 
     @Override
     public boolean containsAll(Collection<?> c) {
+        Objects.requireNonNull(c);
         for (Object object : c) {
-            if (!this.contains(c)) {
+            if (!this.contains(object)) {
                 return false;
             }
         }
@@ -111,9 +111,9 @@ public class MyArrayList<E> implements List<E> {
             return false;
         }
         ensureCapacity(size + c.size());
-        int movingLentgh = size - index;
-        if (movingLentgh > 0) {
-            System.arraycopy(items, index, items, index + c.size(), movingLentgh);
+        int movingLength = size - index;
+        if (movingLength > 0) {
+            System.arraycopy(items, index, items, index + c.size(), movingLength);
         }
         int i = index;
         for (E collectionItem : c) {
@@ -183,6 +183,7 @@ public class MyArrayList<E> implements List<E> {
         }
         System.arraycopy(items, index, items, index + 1, size - 1 - index);
         items[index] = element;
+        ++modCount;
     }
 
     @Override
@@ -231,17 +232,20 @@ public class MyArrayList<E> implements List<E> {
         return new MyListIterator(index);
     }
 
+    @Override
+    public List<E> subList(int i, int i1) {
+        throw new UnsupportedOperationException("The method subList isn't defined.");
+    }
+
     public void ensureCapacity(int minCapacity) {
         if (items.length < minCapacity) {
-            ++modCount;
             items = Arrays.copyOf(items, minCapacity);
         }
     }
 
     public void trimToSize() {
-        ++modCount;
         if (size < items.length) {
-            items = size == 0 ? EMPTY_ITEMS : Arrays.copyOf(items, size);
+            items = Arrays.copyOf(items, size);
         }
     }
 
@@ -255,12 +259,6 @@ public class MyArrayList<E> implements List<E> {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
-    }
-
-    // Метод sublist реализовывать не нужно
-    @Override
-    public List<E> subList(int fromIndex, int toIndex) {
-        return null;
     }
 
     private class MyIterator implements Iterator<E> {
@@ -280,7 +278,7 @@ public class MyArrayList<E> implements List<E> {
             if (initialModCount != modCount) {
                 throw new ConcurrentModificationException();
             }
-            if (currentIndex + 1 > size) {
+            if (currentIndex + 1 >= size) {
                 throw new NoSuchElementException();
             }
             ++currentIndex;
@@ -294,12 +292,6 @@ public class MyArrayList<E> implements List<E> {
             }
             MyArrayList.this.remove(currentIndex);
             initialModCount = modCount;
-        }
-
-        // не надо реализовывать
-        @Override
-        public void forEachRemaining(Consumer<? super E> consumer) {
-            return;
         }
     }
 
