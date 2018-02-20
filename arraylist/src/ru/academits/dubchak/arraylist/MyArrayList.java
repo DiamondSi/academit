@@ -189,11 +189,10 @@ public class MyArrayList<E> implements List<E> {
     @Override
     public E remove(int index) {
         rangeCheck(index);
+        E temp = items[index];
         if (index < size - 1) {
             System.arraycopy(items, index + 1, items, index, size - index - 1);
         }
-        E temp = items[index];
-        items[size] = null;
         --size;
         ++modCount;
         return temp;
@@ -303,6 +302,7 @@ public class MyArrayList<E> implements List<E> {
         }
 
         public MyListIterator(int index) {
+            super();
             this.currentIndex = index;
         }
 
@@ -351,10 +351,15 @@ public class MyArrayList<E> implements List<E> {
 
     @Override
     public String toString() {
-        return "MyArrayList{" +
-                "items=" + Arrays.toString(items) +
-                ", size=" + size +
-                ", modCount=" + modCount +
-                '}';
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[");
+        for (int i = 0; i < size; ++i) {
+            stringBuilder.append(items[i]);
+            if (i != size - 1) {
+                stringBuilder.append(", ");
+            }
+        }
+        stringBuilder.append("]");
+        return stringBuilder.toString();
     }
 }
