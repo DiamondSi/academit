@@ -346,5 +346,15 @@ public class MyArrayList<E> implements List<E> {
             MyArrayList.this.add(currentIndex, e);
             initialModCount = modCount;
         }
+
+    }
+
+    @Override
+    public String toString() {
+        return "MyArrayList{" +
+                "items=" + Arrays.toString(items) +
+                ", size=" + size +
+                ", modCount=" + modCount +
+                '}';
     }
 }
