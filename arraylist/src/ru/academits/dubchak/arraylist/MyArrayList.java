@@ -235,7 +235,7 @@ public class MyArrayList<E> implements List<E> {
         throw new UnsupportedOperationException("The method subList isn't defined.");
     }
 
-    private void ensureCapacity(int minCapacity) {
+    public void ensureCapacity(int minCapacity) {
         if (items.length < minCapacity) {
             items = Arrays.copyOf(items, minCapacity);
         }
