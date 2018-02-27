@@ -5,7 +5,7 @@ import ru.academits.dubchak.vector.Vector;
 import java.util.Arrays;
 
 public class Matrix {
-    private Vector[] vectors;
+    private Vector[] rows;
 
     // TODO 1.Конструкторы:
     // 1.a.	Matrix(n, m) – матрица нулей размера nxm
@@ -16,18 +16,18 @@ public class Matrix {
         if (columns <= 0) {
             throw new IllegalArgumentException(Integer.toString(columns));
         }
-        vectors = new Vector[rows];
+        this.rows = new Vector[rows];
         for (int i = 0; i < rows; i++) {
-            vectors[i] = new Vector(columns);
+            this.rows[i] = new Vector(columns);
         }
     }
 
-    //TODO 1.b.	Matrix(Matrix) – конструктор копирования
+    //1.b.	Matrix(Matrix) – конструктор копирования
     public Matrix(Matrix matrix) {
-        int rows = matrix.vectors.length;
-        this.vectors = new Vector[rows];
-        for (int i = 0; i < rows; i++) {
-            this.vectors[i] = new Vector(matrix.vectors[i]);
+        int matrixRows = matrix.rows.length;
+        this.rows = new Vector[matrixRows];
+        for (int i = 0; i < matrixRows; i++) {
+            this.rows[i] = new Vector(matrix.rows[i]);
         }
     }
     //TODO 1.c.Matrix(double[][]) – из двумерного массива
@@ -44,7 +44,7 @@ public class Matrix {
     @Override
     public String toString() {
         return "{" +
-                Arrays.toString(vectors) +
+                Arrays.toString(rows) +
                 '}';
     }
 

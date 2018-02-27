@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Matrix matrix = new Matrix(2, 3);
         System.out.println(matrix);
-//        Vector vector=new Vector(3);
-//        System.out.println(vector);
+        Matrix matrix1 = new Matrix(matrix);
+        System.out.println(matrix1);
     }
 }
