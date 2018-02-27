@@ -21,10 +21,15 @@ public class Matrix {
             vectors[i] = new Vector(columns);
         }
     }
-    //TODO 1.b.	Matrix(Matrix) – конструктор копирования
-public Matrix(Matrix matrix){
 
-}
+    //TODO 1.b.	Matrix(Matrix) – конструктор копирования
+    public Matrix(Matrix matrix) {
+        int rows = matrix.vectors.length;
+        this.vectors = new Vector[rows];
+        for (int i = 0; i < rows; i++) {
+            this.vectors[i] = new Vector(matrix.vectors[i]);
+        }
+    }
     //TODO 1.c.Matrix(double[][]) – из двумерного массива
     //TODO 1.d.Matrix(Vector[]) – из массива векторов-строк
 
