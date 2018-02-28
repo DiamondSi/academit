@@ -30,8 +30,24 @@ public class Matrix {
             this.rows[i] = new Vector(matrix.rows[i]);
         }
     }
+
     //TODO 1.c.Matrix(double[][]) – из двумерного массива
+    public Matrix(double[][] array) {
+        int matrixRows = array.length;
+        this.rows = new Vector[matrixRows];
+        for (int i = 0; i < matrixRows; i++) {
+            this.rows[i] = new Vector(array[i]);
+        }
+    }
+
     //TODO 1.d.Matrix(Vector[]) – из массива векторов-строк
+    public Matrix(Vector[] vector) {
+        int matrixRows = vector.length;
+        this.rows = new Vector[matrixRows];
+        for (int i = 0; i < matrixRows; i++) {
+            this.rows[i] = new Vector(vector[i]);
+        }
+    }
 
     //TODO 2.	Методы:
     //TODO 2.a.	Получение размеров матрицы
