@@ -59,7 +59,23 @@ public class Matrix {
         return rows[0].getSize();
     }
 
-    //TODO 2.b.	Получение и задание вектора-строки по индексу
+    //2.b.	Получение и задание вектора-строки по индексу
+    public Vector getRow(int index) {
+        int rowCount = getRowsCount();
+        if (index < 0 || index >= rowCount) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
+        return rows[index];
+    }
+
+    public void setRow(int index, Vector vector) {
+        int rowCount = getRowsCount();
+        if (index < 0 || index >= rowCount) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
+        rows[index] = new Vector(vector);
+    }
+
     //TODO 2.c.	Получение вектора-столбца по индексу
     //TODO 2.d.	Транспонирование матрицы
     //TODO 2.e.	Умножение на скаляр
