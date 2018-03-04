@@ -90,7 +90,17 @@ public class Matrix {
         return vector;
     }
 
-    //TODO 2.d.	Транспонирование матрицы
+    //2.d.	Транспонирование матрицы
+    public Matrix transpose() {
+        int rowsCount = getColumnsCount();
+        Vector[] vectors = new Vector[rowsCount];
+        for (int i = 0; i < rowsCount; i++) {
+            vectors[i] = getColumn(i);
+        }
+        rows = vectors;
+        return this;
+    }
+
     //TODO 2.e.	Умножение на скаляр
     //TODO 2.f.	Вычисление определителя матрицы
     //TODO 2.g.	toString определить так, чтобы выводить в виде { { 1, 2 }, { 2, 3 } }

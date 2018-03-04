@@ -8,5 +8,6 @@ public class Main {
         System.out.println(matrix);
         Matrix matrix1 = new Matrix(matrix);
         System.out.println(matrix1);
+        System.out.println(matrix1.transpose());
     }
 }
