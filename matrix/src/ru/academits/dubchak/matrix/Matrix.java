@@ -55,7 +55,7 @@ public class Matrix {
         return rows.length;
     }
 
-    public int gerColumnsCount() {
+    public int getColumnsCount() {
         return rows[0].getSize();
     }
 
@@ -76,7 +76,20 @@ public class Matrix {
         rows[index] = new Vector(vector);
     }
 
-    //TODO 2.c.	Получение вектора-столбца по индексу
+    //2.c.	Получение вектора-столбца по индексу
+    public Vector getColumn(int index) {
+        int columnCount = getColumnsCount();
+        if (index < 0 || index >= columnCount) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
+        int rowsCount = getRowsCount();
+        Vector vector = new Vector(rowsCount);
+        for (int i = 0; i < rowsCount; i++) {
+            vector.setElement(i, rows[i].getElement(index));
+        }
+        return vector;
+    }
+
     //TODO 2.d.	Транспонирование матрицы
     //TODO 2.e.	Умножение на скаляр
     //TODO 2.f.	Вычисление определителя матрицы
