@@ -9,5 +9,12 @@ public class Main {
         Matrix matrix1 = new Matrix(matrix);
         System.out.println(matrix1);
         System.out.println(matrix1.transpose());
+        System.out.println(matrix1);
+        System.out.println();
+        double[][] array={{1,2},{3,4},{5,6},{7,8},{9,10}};
+        Matrix matrix2=new Matrix(array);
+        System.out.println(matrix2);
+        System.out.println(matrix2.scalarMultiplicationMatrix(2));
+        System.out.println(matrix2);
     }
 }

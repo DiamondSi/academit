@@ -101,7 +101,14 @@ public class Matrix {
         return this;
     }
 
-    //TODO 2.e.	Умножение на скаляр
+    //2.e.	Умножение на скаляр
+    public Matrix scalarMultiplicationMatrix(double scalar){
+        int rowCount=getRowsCount();
+        for (int i=0;i<rowCount;i++){
+            rows[i].scalarMultiplicationVector(scalar);
+        }
+        return this;
+    }
     //TODO 2.f.	Вычисление определителя матрицы
     //TODO 2.g.	toString определить так, чтобы выводить в виде { { 1, 2 }, { 2, 3 } }
     @Override
