@@ -38,7 +38,7 @@ public class Vector {
         this.vector[index] = value;
     }
 
-    private int getSize() {
+    public int getSize() {
         return vector.length;
     }
 

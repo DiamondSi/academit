@@ -50,7 +50,15 @@ public class Matrix {
     }
 
     //TODO 2.	Методы:
-    //TODO 2.a.	Получение размеров матрицы
+    //2.a.	Получение размеров матрицы
+    public int getRowsCount() {
+        return rows.length;
+    }
+
+    public int gerColumnsCount() {
+        return rows[0].getSize();
+    }
+
     //TODO 2.b.	Получение и задание вектора-строки по индексу
     //TODO 2.c.	Получение вектора-столбца по индексу
     //TODO 2.d.	Транспонирование матрицы
