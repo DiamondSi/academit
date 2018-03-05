@@ -110,6 +110,9 @@ public class Matrix {
         return this;
     }
     //TODO 2.f.	Вычисление определителя матрицы
+    public double getDeterminant(Matrix matrix){
+        return 0;
+    }
     //TODO 2.g.	toString определить так, чтобы выводить в виде { { 1, 2 }, { 2, 3 } }
     @Override
     public String toString() {
