@@ -102,15 +102,34 @@ public class Matrix {
     }
 
     //2.e.	Умножение на скаляр
-    public Matrix scalarMultiplicationMatrix(double scalar){
-        int rowCount=getRowsCount();
-        for (int i=0;i<rowCount;i++){
+    public Matrix scalarMultiplicationMatrix(double scalar) {
+        int rowCount = getRowsCount();
+        for (int i = 0; i < rowCount; i++) {
             rows[i].scalarMultiplicationVector(scalar);
         }
         return this;
     }
+
     //TODO 2.f.	Вычисление определителя матрицы
-    public double getDeterminant(Matrix matrix){
+    public double getDeterminant() {
+        int rowCount = getRowsCount();
+        int columnsCount = getColumnsCount();
+        if (rowCount != columnsCount) {
+            throw new IllegalArgumentException("matrix is non-square");
+        }
+        if (rowCount == 1) {
+            return rows[0].getElement(0);
+        }
+        return getDeterminant(this);
+    }
+    private static double getDeterminant(Matrix matrix) {
+        int size = matrix.getRowsCount();
+        if (size == 2) {
+            return matrix.getRow(0).getElement(0) * matrix.getRow(1).getElement(1) -
+                    matrix.getRow(1).getElement(0) * matrix.getRow(0).getElement(1);
+        }
+        double sum=0;
+
         return 0;
     }
     //TODO 2.g.	toString определить так, чтобы выводить в виде { { 1, 2 }, { 2, 3 } }
