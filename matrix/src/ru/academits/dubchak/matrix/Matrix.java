@@ -123,13 +123,16 @@ public class Matrix {
         return getDeterminant(this);
     }
     private static double getDeterminant(Matrix matrix) {
-        int size = matrix.getRowsCount();
-        if (size == 2) {
+        int n = matrix.getRowsCount();
+        if (n == 2) {
             return matrix.getRow(0).getElement(0) * matrix.getRow(1).getElement(1) -
                     matrix.getRow(1).getElement(0) * matrix.getRow(0).getElement(1);
         }
         double sum=0;
+for (int j=0;j<n;j++){
+    Matrix subMatrix=new Matrix(n-1,n-1);
 
+}
         return 0;
     }
     //TODO 2.g.	toString определить так, чтобы выводить в виде { { 1, 2 }, { 2, 3 } }
