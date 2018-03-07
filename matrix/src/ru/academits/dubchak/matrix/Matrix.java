@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class Matrix {
     private Vector[] rows;
 
-    // TODO 1.Конструкторы:
+    // 1.Конструкторы:
     // 1.a.	Matrix(n, m) – матрица нулей размера nxm
     public Matrix(int columns, int rows) {
         if (rows <= 0) {
@@ -32,7 +32,7 @@ public class Matrix {
         }
     }
 
-    //TODO 1.c.Matrix(double[][]) – из двумерного массива
+    //1.c.Matrix(double[][]) – из двумерного массива
     public Matrix(double[][] array) {
         int matrixRows = array.length;
         this.rows = new Vector[matrixRows];
@@ -41,7 +41,7 @@ public class Matrix {
         }
     }
 
-    //TODO 1.d.Matrix(Vector[]) – из массива векторов-строк
+    //1.d.Matrix(Vector[]) – из массива векторов-строк
     public Matrix(Vector[] vector) {
         int matrixRows = vector.length;
         this.rows = new Vector[matrixRows];
@@ -50,7 +50,7 @@ public class Matrix {
         }
     }
 
-    //TODO 2.	Методы:
+    //2.	Методы:
     //2.a.	Получение размеров матрицы
     public int getRowsCount() {
         return rows.length;
