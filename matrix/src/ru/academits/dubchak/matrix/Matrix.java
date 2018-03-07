@@ -1,5 +1,6 @@
 package ru.academits.dubchak.matrix;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import ru.academits.dubchak.vector.Vector;
 
 import java.util.Arrays;
@@ -114,27 +115,55 @@ public class Matrix {
     public double getDeterminant() {
         int rowCount = getRowsCount();
         int columnsCount = getColumnsCount();
+
         if (rowCount != columnsCount) {
             throw new IllegalArgumentException("matrix is non-square");
         }
-        if (rowCount == 1) {
-            return rows[0].getElement(0);
-        }
-        return getDeterminant(this);
-    }
-    private static double getDeterminant(Matrix matrix) {
-        int n = matrix.getRowsCount();
-        if (n == 2) {
-            return matrix.getRow(0).getElement(0) * matrix.getRow(1).getElement(1) -
-                    matrix.getRow(1).getElement(0) * matrix.getRow(0).getElement(1);
-        }
-        double sum=0;
-for (int j=0;j<n;j++){
-    Matrix subMatrix=new Matrix(n-1,n-1);
 
-}
-        return 0;
+        Matrix matrix = new Matrix(this);
+        int permutationsCount = 0;
+        for (int i = 0; i < columnsCount; i++) {
+            for (int j = i + 1; j < rowCount; j++) {
+                if (matrix.rows[j].getElement(i) != 0) {
+                    if (matrix.getIndexMaxElement(i) != i) {
+                        Vector vector = matrix.rows[i];
+                        matrix.rows[i] = matrix.rows[j];
+                        matrix.rows[j] = vector;
+                        ++permutationsCount;
+                        double num = matrix.rows[j].getElement(i) / matrix.rows[i].getElement(i);
+                        for (int k = i; k < columnsCount; k++) {
+                            matrix.rows[j].setElement(k, matrix.rows[j].getElement(k) - matrix.rows[i].getElement(k) * num);
+                        }
+                    }
+                }
+                if (matrix.rows[i].getElement(i) == 0) {
+                    return 0;
+                }
+            }
+        }
+        double det = 1;
+        for (int i = 0; i < columnsCount; i++) {
+            det *= matrix.rows[i].getElement(i);
+        }
+        if (permutationsCount % 2 != 0) {
+            return -det;
+        }
+        return det;
     }
+
+    private int getIndexMaxElement(int index) {
+        Vector column = getColumn(index);
+        double maxValue = Math.abs(column.getElement(index));
+        int temp = index;
+        for (int i = index; i < getRowsCount(); i++) {
+            if (Math.abs(column.getElement(i)) > maxValue) {
+                maxValue = Math.abs(column.getElement(i));
+                temp = i;
+            }
+        }
+        return temp;
+    }
+
     //TODO 2.g.	toString определить так, чтобы выводить в виде { { 1, 2 }, { 2, 3 } }
     @Override
     public String toString() {
