@@ -111,7 +111,7 @@ public class Matrix {
         return this;
     }
 
-    //TODO 2.f.	Вычисление определителя матрицы
+    //2.f.	Вычисление определителя матрицы
     public double getDeterminant() {
         int rowCount = getRowsCount();
         int columnsCount = getColumnsCount();
@@ -164,12 +164,18 @@ public class Matrix {
         return temp;
     }
 
-    //TODO 2.g.	toString определить так, чтобы выводить в виде { { 1, 2 }, { 2, 3 } }
+    //2.g.	toString определить так, чтобы выводить в виде { { 1, 2 }, { 2, 3 } }
     @Override
     public String toString() {
-        return "{" +
-                Arrays.toString(rows) +
-                '}';
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("{");
+        stringBuilder.append(rows[0]);
+        for (int i=1;i<rows.length;i++) {
+            stringBuilder.append(",");
+            stringBuilder.append(rows[i]);
+        }
+        stringBuilder.append("}");
+        return stringBuilder.toString();
     }
 
     //TODO 2.h.	умножение матрицы на вектор
