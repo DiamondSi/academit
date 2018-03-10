@@ -207,8 +207,20 @@ public class Matrix {
         }
         return this;
     }
-    //TODO 2.j.	Вычитание матриц
-
+    //2.j.	Вычитание матриц
+    public Matrix subMatrix(Matrix matrix) {
+        int rowsCounts = getRowsCount();
+        int columsCounts = getColumnsCount();
+        int matrixRowsCounts = matrix.getRowsCount();
+        int matrixColumnsCounts = matrix.getColumnsCount();
+        if (rowsCounts != matrixRowsCounts || columsCounts != matrixColumnsCounts) {
+            throw new IllegalArgumentException("Matrixes are not consistent");
+        }
+        for (int i = 0; i < rowsCounts; i++) {
+            rows[i].subVector(matrix.getRow(i));
+        }
+        return this;
+    }
     //TODO 3.	Статические методы:
     //TODO 3.a.	Сложение матриц
     //TODO 3.b.	Вычитание матриц
