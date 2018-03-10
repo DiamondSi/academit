@@ -170,7 +170,7 @@ public class Matrix {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("{");
         stringBuilder.append(rows[0]);
-        for (int i=1;i<rows.length;i++) {
+        for (int i = 1; i < rows.length; i++) {
             stringBuilder.append(",");
             stringBuilder.append(rows[i]);
         }
@@ -178,7 +178,20 @@ public class Matrix {
         return stringBuilder.toString();
     }
 
-    //TODO 2.h.	умножение матрицы на вектор
+    //2.h.	умножение матрицы на вектор
+    public Vector multiplyMatixVector(Vector vector) {
+        int matrixColumnsCount = getColumnsCount();
+        int vectorSize = vector.getSize();
+        if (vectorSize != matrixColumnsCount) {
+            throw new IllegalArgumentException("The matrix and the vector are not consistent");
+        }
+        int resultLength = getRowsCount();
+        Vector resultVector = new Vector(resultLength);
+        for (int i = 0; i < resultLength; i++) {
+            resultVector.setElement(i, Vector.multiplicationVector(getRow(i), vector));
+        }
+        return resultVector;
+    }
     //TODO 2.i.	Сложение матриц
     //TODO 2.j.	Вычитание матриц
 
