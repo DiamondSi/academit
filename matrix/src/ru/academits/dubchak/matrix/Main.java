@@ -2,6 +2,7 @@ package ru.academits.dubchak.matrix;
 
 import ru.academits.dubchak.vector.Vector;
 
+
 public class Main {
     public static void main(String[] args) {
 //        Matrix matrix = new Matrix(2, 3);
@@ -29,10 +30,11 @@ public class Main {
         double[][] array5 = {{1, 1}, {1, 1}, {1, 1}};
         Matrix matrix4 = new Matrix(array4);
         Matrix matrix5 = new Matrix(array5);
-        System.out.println(matrix4);
-        Matrix matrix6 = matrix4.subMatrix(matrix5);
 //        System.out.println(matrix4);
+//        Matrix matrix6 = matrix4.subMatrix(matrix5);
+        System.out.println(matrix4);
         System.out.println(matrix5);
-        System.out.println(matrix6);
+        System.out.println(Matrix.getSumMatrix(matrix4,matrix5));
+//        System.out.println(matrix6);
     }
 }

@@ -221,8 +221,11 @@ public class Matrix {
         }
         return this;
     }
-    //TODO 3.	Статические методы:
-    //TODO 3.a.	Сложение матриц
+    //3.	Статические методы:
+    //3.a.	Сложение матриц
+    public static Matrix getSumMatrix(Matrix matrix1, Matrix matrix2){
+        return new Matrix(matrix1.sumMatrix(matrix2));
+    }
     //TODO 3.b.	Вычитание матриц
     //TODO 3.c.	Умножение матриц
 }
