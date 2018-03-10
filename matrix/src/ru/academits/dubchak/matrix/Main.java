@@ -34,7 +34,8 @@ public class Main {
 //        Matrix matrix6 = matrix4.subMatrix(matrix5);
         System.out.println(matrix4);
         System.out.println(matrix5);
-        System.out.println(Matrix.getSumMatrix(matrix4,matrix5));
+//        System.out.println(Matrix.getSumMatrix(matrix4,matrix5));
+        System.out.println(Matrix.getSubMatrix(matrix4,matrix5));
 //        System.out.println(matrix6);
     }
 }

@@ -50,6 +50,17 @@ public class Matrix {
         }
     }
 
+    //3.	Статические методы:
+    //3.a.	Сложение матриц
+    public static Matrix getSumMatrix(Matrix matrix1, Matrix matrix2) {
+        return new Matrix(matrix1.sumMatrix(matrix2));
+    }
+
+    //3.b.	Вычитание матриц
+    public static Matrix getSubMatrix(Matrix matrix1, Matrix matrix2) {
+        return new Matrix(matrix1.subMatrix(matrix2));
+    }
+
     //2.	Методы:
     //2.a.	Получение размеров матрицы
     public int getRowsCount() {
@@ -207,6 +218,7 @@ public class Matrix {
         }
         return this;
     }
+
     //2.j.	Вычитание матриц
     public Matrix subMatrix(Matrix matrix) {
         int rowsCounts = getRowsCount();
@@ -221,11 +233,5 @@ public class Matrix {
         }
         return this;
     }
-    //3.	Статические методы:
-    //3.a.	Сложение матриц
-    public static Matrix getSumMatrix(Matrix matrix1, Matrix matrix2){
-        return new Matrix(matrix1.sumMatrix(matrix2));
-    }
-    //TODO 3.b.	Вычитание матриц
     //TODO 3.c.	Умножение матриц
 }
