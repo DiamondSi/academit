@@ -192,7 +192,21 @@ public class Matrix {
         }
         return resultVector;
     }
-    //TODO 2.i.	Сложение матриц
+
+    //2.i.	Сложение матриц
+    public Matrix sumMatrix(Matrix matrix) {
+        int rowsCounts = getRowsCount();
+        int columsCounts = getColumnsCount();
+        int matrixRowsCounts = matrix.getRowsCount();
+        int matrixColumnsCounts = matrix.getColumnsCount();
+        if (rowsCounts != matrixRowsCounts || columsCounts != matrixColumnsCounts) {
+            throw new IllegalArgumentException("Matrixes are not consistent");
+        }
+        for (int i = 0; i < rowsCounts; i++) {
+            rows[i].addVector(matrix.getRow(i));
+        }
+        return this;
+    }
     //TODO 2.j.	Вычитание матриц
 
     //TODO 3.	Статические методы:
