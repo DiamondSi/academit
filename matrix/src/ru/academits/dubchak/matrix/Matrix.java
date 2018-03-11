@@ -42,12 +42,18 @@ public class Matrix {
     }
 
     //1.d.Matrix(Vector[]) – из массива векторов-строк
-    //TODO проверить вектора и дополнить 0 при необходимости
-    public Matrix(Vector[] vector) {
-        int matrixRows = vector.length;
-        this.rows = new Vector[matrixRows];
-        for (int i = 0; i < matrixRows; i++) {
-            this.rows[i] = new Vector(vector[i]);
+    public Matrix(Vector[] vectors) {
+        int rowsCount = vectors.length;
+        int columnsCount = 0;
+        for (Vector vector : vectors) {
+            columnsCount = Math.max(columnsCount, vector.getSize());
+        }
+        this.rows = new Vector[rowsCount];
+        for (int i = 0; i < rowsCount; i++) {
+            this.rows[i] = new Vector(columnsCount);
+            for (int j = 0; j < vectors[i].getSize(); j++) {
+                this.rows[i].setElement(j, vectors[i].getElement(j));
+            }
         }
     }
 
