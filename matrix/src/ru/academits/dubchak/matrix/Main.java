@@ -27,7 +27,7 @@ public class Main {
 //        Vector vector2= matrix3.multiplyMatixVector(vector1);
 //        System.out.println(vector2);
         double[][] array4 = {{1, 2}, {4, 5}, {7, 8}};
-        double[][] array5 = {{1, 1}, {1, 1}, {1, 1}};
+        double[][] array5 = {{1, 1, 1}, {1, 1, 1}};
         Matrix matrix4 = new Matrix(array4);
         Matrix matrix5 = new Matrix(array5);
 //        System.out.println(matrix4);
@@ -35,7 +35,8 @@ public class Main {
         System.out.println(matrix4);
         System.out.println(matrix5);
 //        System.out.println(Matrix.getSumMatrix(matrix4,matrix5));
-        System.out.println(Matrix.getSubMatrix(matrix4,matrix5));
+//        System.out.println(Matrix.getSubMatrix(matrix4,matrix5));
+        System.out.println(Matrix.multiply(matrix4,matrix5));
 //        System.out.println(matrix6);
     }
 }

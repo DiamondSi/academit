@@ -1,6 +1,5 @@
 package ru.academits.dubchak.matrix;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import ru.academits.dubchak.vector.Vector;
 
 import java.util.Arrays;
@@ -33,6 +32,7 @@ public class Matrix {
     }
 
     //1.c.Matrix(double[][]) – из двумерного массива
+//TODO проверить массив и дополнить 0 при необходимости
     public Matrix(double[][] array) {
         int matrixRows = array.length;
         this.rows = new Vector[matrixRows];
@@ -42,6 +42,7 @@ public class Matrix {
     }
 
     //1.d.Matrix(Vector[]) – из массива векторов-строк
+    //TODO проверить вектора и дополнить 0 при необходимости
     public Matrix(Vector[] vector) {
         int matrixRows = vector.length;
         this.rows = new Vector[matrixRows];
@@ -59,6 +60,27 @@ public class Matrix {
     //3.b.	Вычитание матриц
     public static Matrix getSubMatrix(Matrix matrix1, Matrix matrix2) {
         return new Matrix(matrix1.subMatrix(matrix2));
+    }
+
+    //3.c.	Умножение матриц
+    public static Matrix multiply(Matrix matrix1, Matrix matrix2) {
+        int matrix1ColumnsCount = matrix1.getColumnsCount();
+        int matrix2RowsCount = matrix2.getRowsCount();
+        if (matrix1ColumnsCount != matrix2RowsCount) {
+            throw new IllegalArgumentException("Matrices are not consistent");
+        }
+
+        int matrix1RowsCount = matrix1.getRowsCount();
+        int matrix2ColumnsCount = matrix2.getColumnsCount();
+        Matrix resultMatrix = new Matrix(matrix1RowsCount, matrix2ColumnsCount);
+        for (int i = 0; i < matrix1RowsCount; i++) {
+            Vector resultVector = new Vector(matrix2ColumnsCount);
+            for (int j = 0; j < matrix2ColumnsCount; j++) {
+                resultVector.setElement(j, Vector.multiplicationVector(matrix1.getRow(i), matrix2.getColumn(j)));
+            }
+            resultMatrix.setRow(i, resultVector);
+        }
+        return resultMatrix;
     }
 
     //2.	Методы:
@@ -211,7 +233,7 @@ public class Matrix {
         int matrixRowsCounts = matrix.getRowsCount();
         int matrixColumnsCounts = matrix.getColumnsCount();
         if (rowsCounts != matrixRowsCounts || columsCounts != matrixColumnsCounts) {
-            throw new IllegalArgumentException("Matrixes are not consistent");
+            throw new IllegalArgumentException("Matrices are not consistent");
         }
         for (int i = 0; i < rowsCounts; i++) {
             rows[i].addVector(matrix.getRow(i));
@@ -233,5 +255,5 @@ public class Matrix {
         }
         return this;
     }
-    //TODO 3.c.	Умножение матриц
+
 }
