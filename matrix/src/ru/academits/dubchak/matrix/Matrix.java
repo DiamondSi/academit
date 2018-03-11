@@ -120,7 +120,7 @@ public class Matrix {
         if (index < 0 || index >= rowCount) {
             throw new IndexOutOfBoundsException(Integer.toString(index));
         }
-        return rows[index];
+        return new Vector(rows[index]);
     }
 
     public void setRow(int index, Vector vector) {
