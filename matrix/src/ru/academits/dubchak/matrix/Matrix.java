@@ -32,12 +32,15 @@ public class Matrix {
     }
 
     //1.c.Matrix(double[][]) – из двумерного массива
-//TODO проверить массив и дополнить 0 если строки в массиве разной длины
     public Matrix(double[][] array) {
-        int matrixRows = array.length;
-        this.rows = new Vector[matrixRows];
-        for (int i = 0; i < matrixRows; i++) {
-            this.rows[i] = new Vector(array[i]);
+        int rowsCount = array.length;
+        int columnsCount = 0;
+        for (double[] vector : array) {
+            columnsCount = Math.max(columnsCount, vector.length);
+        }
+        this.rows = new Vector[rowsCount];
+        for (int i = 0; i < rowsCount; i++) {
+            this.rows[i] = new Vector(columnsCount, array[i]);
         }
     }
 
