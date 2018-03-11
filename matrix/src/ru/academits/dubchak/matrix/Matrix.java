@@ -75,12 +75,12 @@ public class Matrix {
     //3.	Статические методы:
     //3.a.	Сложение матриц
     public static Matrix getSumMatrix(Matrix matrix1, Matrix matrix2) {
-        return new Matrix(matrix1.sumMatrix(matrix2));
+        return new Matrix(matrix1).sumMatrix(matrix2);
     }
 
     //3.b.	Вычитание матриц
     public static Matrix getSubMatrix(Matrix matrix1, Matrix matrix2) {
-        return new Matrix(matrix1.subMatrix(matrix2));
+        return new Matrix(matrix1).subMatrix(matrix2);
     }
 
     //3.c.	Умножение матриц
