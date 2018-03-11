@@ -32,7 +32,7 @@ public class Matrix {
     }
 
     //1.c.Matrix(double[][]) – из двумерного массива
-//TODO проверить массив и дополнить 0 при необходимости
+//TODO проверить массив и дополнить 0 если строки в массиве разной длины
     public Matrix(double[][] array) {
         int matrixRows = array.length;
         this.rows = new Vector[matrixRows];
