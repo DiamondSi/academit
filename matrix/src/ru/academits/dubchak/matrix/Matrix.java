@@ -158,9 +158,8 @@ public class Matrix {
 
     //2.e.	Умножение на скаляр
     public Matrix scalarMultiplicationMatrix(double scalar) {
-        int rowCount = getRowsCount();
-        for (int i = 0; i < rowCount; i++) {
-            rows[i].scalarMultiplicationVector(scalar);
+        for (Vector row : rows) {
+            row.scalarMultiplicationVector(scalar);
         }
         return this;
     }
