@@ -34,9 +34,15 @@ public class Matrix {
     //1.c.Matrix(double[][]) – из двумерного массива
     public Matrix(double[][] array) {
         int rowsCount = array.length;
+        if (rowsCount <= 0) {
+            throw new IllegalArgumentException(Integer.toString(rowsCount));
+        }
         int columnsCount = 0;
         for (double[] vector : array) {
             columnsCount = Math.max(columnsCount, vector.length);
+        }
+        if (columnsCount <= 0) {
+            throw new IllegalArgumentException(Integer.toString(columnsCount));
         }
         this.rows = new Vector[rowsCount];
         for (int i = 0; i < rowsCount; i++) {
@@ -47,9 +53,15 @@ public class Matrix {
     //1.d.Matrix(Vector[]) – из массива векторов-строк
     public Matrix(Vector[] vectors) {
         int rowsCount = vectors.length;
+        if (rowsCount <= 0) {
+            throw new IllegalArgumentException(Integer.toString(rowsCount));
+        }
         int columnsCount = 0;
         for (Vector vector : vectors) {
             columnsCount = Math.max(columnsCount, vector.getSize());
+        }
+        if (columnsCount <= 0) {
+            throw new IllegalArgumentException(Integer.toString(columnsCount));
         }
         this.rows = new Vector[rowsCount];
         for (int i = 0; i < rowsCount; i++) {
