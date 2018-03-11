@@ -226,7 +226,7 @@ public class Matrix {
         int matrixRowsCounts = matrix.getRowsCount();
         int matrixColumnsCounts = matrix.getColumnsCount();
         if (rowsCounts != matrixRowsCounts || columsCounts != matrixColumnsCounts) {
-            throw new IllegalArgumentException("Matrixes are not consistent");
+            throw new IllegalArgumentException("Matrices are not consistent");
         }
         for (int i = 0; i < rowsCounts; i++) {
             rows[i].subVector(matrix.getRow(i));
