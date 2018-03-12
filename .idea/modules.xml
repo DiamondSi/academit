@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/academit.iml" filepath="$PROJECT_DIR$/academit.iml" />
       <module fileurl="file://$PROJECT_DIR$/arraylist/arraylist.iml" filepath="$PROJECT_DIR$/arraylist/arraylist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/csv/csv.iml" filepath="$PROJECT_DIR$/csv/csv.iml" />
       <module fileurl="file://$PROJECT_DIR$/generics/generics.iml" filepath="$PROJECT_DIR$/generics/generics.iml" />
       <module fileurl="file://$PROJECT_DIR$/lambda/lambda.iml" filepath="$PROJECT_DIR$/lambda/lambda.iml" />
       <module fileurl="file://$PROJECT_DIR$/lists/lists.iml" filepath="$PROJECT_DIR$/lists/lists.iml" />
