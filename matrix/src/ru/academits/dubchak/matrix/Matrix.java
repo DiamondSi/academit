@@ -232,7 +232,7 @@ public class Matrix {
     }
 
     //2.h.	умножение матрицы на вектор
-    public Vector multiplyMatixVector(Vector vector) {
+    public Vector multiplyMatrixVector(Vector vector) {
         int matrixColumnsCount = getColumnsCount();
         int vectorSize = vector.getSize();
         if (vectorSize != matrixColumnsCount) {
@@ -249,10 +249,10 @@ public class Matrix {
     //2.i.	Сложение матриц
     public Matrix sumMatrix(Matrix matrix) {
         int rowsCounts = getRowsCount();
-        int columsCounts = getColumnsCount();
+        int columnsCounts = getColumnsCount();
         int matrixRowsCounts = matrix.getRowsCount();
         int matrixColumnsCounts = matrix.getColumnsCount();
-        if (rowsCounts != matrixRowsCounts || columsCounts != matrixColumnsCounts) {
+        if (rowsCounts != matrixRowsCounts || columnsCounts != matrixColumnsCounts) {
             throw new IllegalArgumentException("Matrices are not consistent");
         }
         for (int i = 0; i < rowsCounts; i++) {
@@ -264,10 +264,10 @@ public class Matrix {
     //2.j.	Вычитание матриц
     public Matrix subMatrix(Matrix matrix) {
         int rowsCounts = getRowsCount();
-        int columsCounts = getColumnsCount();
+        int columnsCounts = getColumnsCount();
         int matrixRowsCounts = matrix.getRowsCount();
         int matrixColumnsCounts = matrix.getColumnsCount();
-        if (rowsCounts != matrixRowsCounts || columsCounts != matrixColumnsCounts) {
+        if (rowsCounts != matrixRowsCounts || columnsCounts != matrixColumnsCounts) {
             throw new IllegalArgumentException("Matrices are not consistent");
         }
         for (int i = 0; i < rowsCounts; i++) {

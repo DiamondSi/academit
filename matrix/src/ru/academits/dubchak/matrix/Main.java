@@ -31,7 +31,7 @@ public class Main {
 //        System.out.println(matrix3.getDeterminant());
 //        double[] array3 = {2, 3};
 //        Vector vector1 = new Vector(array3);
-//        Vector vector2= matrix3.multiplyMatixVector(vector1);
+//        Vector vector2= matrix3.multiplyMatrixVector(vector1);
 //        System.out.println(vector2);
         double[][] array4 = {{1, 2}, {4, 5}, {7, 8}};
         double[][] array5 = {{1, 1}, {1, 1}, {1, 1}};
