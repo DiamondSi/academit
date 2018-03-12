@@ -75,11 +75,17 @@ public class Matrix {
     //3.	Статические методы:
     //3.a.	Сложение матриц
     public static Matrix getSumMatrix(Matrix matrix1, Matrix matrix2) {
+        if (matrix1.getRowsCount() != matrix2.getRowsCount() && matrix1.getColumnsCount() != matrix2.getColumnsCount()) {
+            throw new IllegalArgumentException("Matrices are not consistent");
+        }
         return new Matrix(matrix1).sumMatrix(matrix2);
     }
 
     //3.b.	Вычитание матриц
     public static Matrix getSubMatrix(Matrix matrix1, Matrix matrix2) {
+        if (matrix1.getRowsCount() != matrix2.getRowsCount() && matrix1.getColumnsCount() != matrix2.getColumnsCount()) {
+            throw new IllegalArgumentException("Matrices are not consistent");
+        }
         return new Matrix(matrix1).subMatrix(matrix2);
     }
 
