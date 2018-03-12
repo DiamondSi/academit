@@ -286,7 +286,7 @@ public class Matrix {
         if (column <= 0 || column >= columnsCounts) {
             throw new IndexOutOfBoundsException("Column index is wrong: " + Integer.toString(column));
         }
-        return getRow(row).getElement(column);
+        return rows[row].getElement(column);
     }
 
     //5. и задание элемента по двум индексам
