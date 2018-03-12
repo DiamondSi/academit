@@ -166,32 +166,32 @@ public class Matrix {
 
     //2.f.	Вычисление определителя матрицы
     public double getDeterminant() {
-        int rowCount = getRowsCount();
+        int rowsCount = getRowsCount();
         int columnsCount = getColumnsCount();
 
-        if (rowCount != columnsCount) {
+        if (rowsCount != columnsCount) {
             throw new IllegalArgumentException("matrix is non-square");
         }
 
         Matrix matrix = new Matrix(this);
         int permutationsCount = 0;
-        for (int i = 0; i < columnsCount; i++) {
-            for (int j = i + 1; j < rowCount; j++) {
+        for (int i = 0; i < columnsCount - 1; i++) {
+            for (int j = i + 1; j < rowsCount; j++) {
                 if (matrix.rows[j].getElement(i) != 0) {
                     if (matrix.getIndexMaxElement(i) != i) {
                         Vector vector = matrix.rows[i];
                         matrix.rows[i] = matrix.rows[j];
                         matrix.rows[j] = vector;
                         ++permutationsCount;
-                        double num = matrix.rows[j].getElement(i) / matrix.rows[i].getElement(i);
-                        for (int k = i; k < columnsCount; k++) {
-                            matrix.rows[j].setElement(k, matrix.rows[j].getElement(k) - matrix.rows[i].getElement(k) * num);
-                        }
+                    }
+                    double num = matrix.rows[j].getElement(i) / matrix.rows[i].getElement(i);
+                    for (int k = i; k < columnsCount; k++) {
+                        matrix.rows[j].setElement(k, matrix.rows[j].getElement(k) - matrix.rows[i].getElement(k) * num);
                     }
                 }
-                if (matrix.rows[i].getElement(i) == 0) {
-                    return 0;
-                }
+            }
+            if (matrix.rows[i].getElement(i) == 0) {
+                return 0;
             }
         }
         double det = 1;
