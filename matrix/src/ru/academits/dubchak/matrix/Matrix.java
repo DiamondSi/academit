@@ -11,10 +11,10 @@ public class Matrix {
     // 1.a.	Matrix(n, m) – матрица нулей размера nxm
     public Matrix(int columns, int rows) {
         if (rows <= 0) {
-            throw new IllegalArgumentException("Bad rows count " + Integer.toString(rows));
+            throw new IllegalArgumentException("Rows count is wrong: " + Integer.toString(rows));
         }
         if (columns <= 0) {
-            throw new IllegalArgumentException("Bad columns count " + Integer.toString(columns));
+            throw new IllegalArgumentException("Columns count is wrong: " + Integer.toString(columns));
         }
         this.rows = new Vector[rows];
         for (int i = 0; i < rows; i++) {
@@ -35,14 +35,14 @@ public class Matrix {
     public Matrix(double[][] array) {
         int rowsCount = array.length;
         if (rowsCount <= 0) {
-            throw new IllegalArgumentException("Bad rows count " + Integer.toString(rowsCount));
+            throw new IllegalArgumentException("Rows count is wrong: " + Integer.toString(rowsCount));
         }
         int columnsCount = 0;
         for (double[] vector : array) {
             columnsCount = Math.max(columnsCount, vector.length);
         }
         if (columnsCount <= 0) {
-            throw new IllegalArgumentException("Bad columns count " + Integer.toString(columnsCount));
+            throw new IllegalArgumentException("Columns count is wrong: " + Integer.toString(columnsCount));
         }
         this.rows = new Vector[rowsCount];
         for (int i = 0; i < rowsCount; i++) {
@@ -54,14 +54,14 @@ public class Matrix {
     public Matrix(Vector[] vectors) {
         int rowsCount = vectors.length;
         if (rowsCount <= 0) {
-            throw new IllegalArgumentException("Bad rows count " + Integer.toString(rowsCount));
+            throw new IllegalArgumentException("Rows count is wrong: " + Integer.toString(rowsCount));
         }
         int columnsCount = 0;
         for (Vector vector : vectors) {
             columnsCount = Math.max(columnsCount, vector.getSize());
         }
         if (columnsCount <= 0) {
-            throw new IllegalArgumentException("Bad columns count " + Integer.toString(columnsCount));
+            throw new IllegalArgumentException("Columns count is wrong:  " + Integer.toString(columnsCount));
         }
         this.rows = new Vector[rowsCount];
         for (int i = 0; i < rowsCount; i++) {
@@ -118,7 +118,7 @@ public class Matrix {
     public Vector getRow(int index) {
         int rowCount = getRowsCount();
         if (index < 0 || index >= rowCount) {
-            throw new IndexOutOfBoundsException("Bad row index " + Integer.toString(index));
+            throw new IndexOutOfBoundsException("Row index is wrong: " + Integer.toString(index));
         }
         return new Vector(rows[index]);
     }
@@ -126,7 +126,7 @@ public class Matrix {
     public void setRow(int index, Vector vector) {
         int rowCount = getRowsCount();
         if (index < 0 || index >= rowCount) {
-            throw new IndexOutOfBoundsException("Bad row index " + Integer.toString(index));
+            throw new IndexOutOfBoundsException("Row index is wrong: " + Integer.toString(index));
         }
         rows[index] = new Vector(vector);
     }
@@ -135,7 +135,7 @@ public class Matrix {
     public Vector getColumn(int index) {
         int columnCount = getColumnsCount();
         if (index < 0 || index >= columnCount) {
-            throw new IndexOutOfBoundsException("Bad column index " + Integer.toString(index));
+            throw new IndexOutOfBoundsException("Column index is wrong: " + Integer.toString(index));
         }
         int rowsCount = getRowsCount();
         Vector vector = new Vector(rowsCount);
@@ -280,11 +280,11 @@ public class Matrix {
     public double getElement(int row, int column) {
         int rowsCounts = getRowsCount();
         if (row <= 0 || row >= rowsCounts) {
-            throw new IndexOutOfBoundsException("Bad row index " + Integer.toString(row));
+            throw new IndexOutOfBoundsException("Row index is wrong: " + Integer.toString(row));
         }
         int columnsCounts = getColumnsCount();
         if (column <= 0 || column >= columnsCounts) {
-            throw new IndexOutOfBoundsException("Bad column index " + Integer.toString(column));
+            throw new IndexOutOfBoundsException("Column index is wrong: " + Integer.toString(column));
         }
         return getRow(row).getElement(column);
     }
@@ -293,11 +293,11 @@ public class Matrix {
     public void setElement(int row, int column, double value) {
         int rowsCounts = getRowsCount();
         if (row <= 0 || row >= rowsCounts) {
-            throw new IndexOutOfBoundsException("Bad row index " + Integer.toString(row));
+            throw new IndexOutOfBoundsException("Row index is wrong: " + Integer.toString(row));
         }
         int columnsCounts = getColumnsCount();
         if (column <= 0 || column >= columnsCounts) {
-            throw new IndexOutOfBoundsException("Bad column index " + Integer.toString(column));
+            throw new IndexOutOfBoundsException("Column index is wrong: " + Integer.toString(column));
         }
         rows[row].setElement(column, value);
     }
