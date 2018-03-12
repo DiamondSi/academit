@@ -48,6 +48,9 @@ public class Main {
         System.out.println(matrix5);
         matrix5.scalarMultiplicationMatrix(3);
         System.out.println(matrix5);
+        System.out.println(matrix4.getElement(2,1));
+        matrix4.setElement(2,1,50);
+        System.out.println(matrix4);
 //        System.out.println(Matrix.multiply(matrix4,matrix5));
 //        System.out.println(matrix6);
     }

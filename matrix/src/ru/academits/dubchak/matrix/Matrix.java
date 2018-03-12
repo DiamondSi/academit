@@ -276,4 +276,29 @@ public class Matrix {
         return this;
     }
 
+    //5. Надо еще получение элемента по двум индексам
+    public double getElement(int row, int column) {
+        int rowsCounts = getRowsCount();
+        if (row <= 0 || row >= rowsCounts) {
+            throw new IllegalArgumentException(Integer.toString(row));
+        }
+        int columnsCounts = getColumnsCount();
+        if (column <= 0 || column >= columnsCounts) {
+            throw new IllegalArgumentException(Integer.toString(column));
+        }
+        return getRow(row).getElement(column);
+    }
+
+    //5. и задание элемента по двум индексам
+    public void setElement(int row, int column, double value) {
+        int rowsCounts = getRowsCount();
+        if (row <= 0 || row >= rowsCounts) {
+            throw new IllegalArgumentException(Integer.toString(row));
+        }
+        int columnsCounts = getColumnsCount();
+        if (column <= 0 || column >= columnsCounts) {
+            throw new IllegalArgumentException(Integer.toString(column));
+        }
+        rows[row].setElement(column, value);
+    }
 }
