@@ -16,7 +16,7 @@ public class Csv {
         System.out.println(args[0]);
         try (Scanner scanner = new Scanner(new FileInputStream(args[0]),"windows-1251")) {
             while (scanner.hasNext()) {
-                String inputString = scanner.next();
+                String inputString = scanner.nextLine();
                 System.out.println(inputString);
             }
         }
