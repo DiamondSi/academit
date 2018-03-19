@@ -35,16 +35,22 @@ public class CsvParser {
                             writer.print("\"");
                             i++;
                         } else {
-                            inQuotes = !inQuotes;
+                            inQuotes = false;
                         }
                     } else if (string.charAt(i) == delimiter) {
                         if (inQuotes) {
                             writer.print(delimiter);
-                        } else writer.print("</td>");
+                        } else {
+                            writer.print("</td>");
+                            writer.print("<td>");
+                        }
+                    } else if (inQuotes && i == string.length()) {
+                        writer.print("<br/>");
+                        string = scanner.nextLine();
+                        i = 0;
                     } else {
                         writer.print(string.charAt(i));
                     }
-
                 }
                 writer.print("</td>");
                 writer.println("</tr>");
