@@ -35,7 +35,8 @@ public class CsvParser {
                             writer.print("\"");
                             i++;
                         } else {
-                            inQuotes = false;
+                            inQuotes = true;
+                            writer.print("<td>");
                         }
                     } else if (string.charAt(i) == delimiter) {
                         if (inQuotes) {
