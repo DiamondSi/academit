@@ -19,44 +19,62 @@ public class CsvParser {
             writer.println("<!DOCTYPE html>");
             writer.println("<html>");
             writer.println("<head>");
-            writer.println("<meta charset=\"utf-8\" />");
-            writer.println("<title>HTML Document</title>");
+            writer.println("\t<meta charset=\"utf-8\" />");
+            writer.println("\t<title>HTML Document</title>");
             writer.println("</head>");
             writer.println("<body>");
-            writer.println("<table border=\"1\" cellspacing=\"0\">");
-            boolean inQuotes = false;
-            while (scanner.hasNext()) {
-                writer.print("<tr>");
+            writer.println("\t<table border=\"1\" cellspacing=\"0\">");
+            boolean inQuotes;
+            while (scanner.hasNextLine()) {
+                writer.print("\t\t<tr>");
                 writer.print("<td>");
                 String string = scanner.nextLine();
                 for (int i = 0; i < string.length(); i++) {
-                    if (string.charAt(i) == '"') {
-                        if ((i + 1) < string.length() && string.charAt(i + 1) == '"') {
-                            writer.print("\"");
-                            i++;
-                        } else {
-                            inQuotes = true;
-                            writer.print("<td>");
+                    char character = string.charAt(i);
+                    if (character == '"') {
+                        inQuotes = true;
+                        i++;
+                        while (inQuotes) {
+                            if (i == string.length() - 1) {
+                                writer.println("</td></tr>");
+                                inQuotes = false;
+                            } else if (string.charAt(i) == '"' && string.charAt(i + 1) == '"') {
+                                writer.print(string.charAt(i + 1));
+                                i = i + 2;
+                            } else if (string.charAt(i) != '"') {
+                                while (string.charAt(i) != '"') {
+                                    writer.print(string.charAt(i));
+                                    i++;
+                                    if (i == string.length()) {
+                                        writer.print("<br/>");
+                                        string = scanner.nextLine();
+                                        i = 0;
+                                    }
+                                }
+                            } else {
+                                inQuotes = false;
+                            }
                         }
-                    } else if (string.charAt(i) == delimiter) {
-                        if (inQuotes) {
-                            writer.print(delimiter);
-                        } else {
-                            writer.print("</td>");
-                            writer.print("<td>");
+                    } else if (character == delimiter) {
+                        writer.print("</td><td>");
+                        if (i == string.length() - 1) {
+                            writer.println("</td></tr>");
                         }
-                    } else if (inQuotes && i == string.length()) {
-                        writer.print("<br/>");
-                        string = scanner.nextLine();
-                        i = 0;
                     } else {
-                        writer.print(string.charAt(i));
+                        while (string.charAt(i) != delimiter) {
+                            writer.print(string.charAt(i));
+                            if (i == string.length() - 1) {
+                                writer.println("</td></tr>");
+                                break;
+                            } else if (string.charAt(i + 1) == delimiter && i != string.length() - 1) {
+                                break;
+                            }
+                            i++;
+                        }
                     }
                 }
-                writer.print("</td>");
-                writer.println("</tr>");
             }
-            writer.println("</table>");
+            writer.println("\t</table>");
             writer.println("</body>");
             writer.println("</html>");
         }
