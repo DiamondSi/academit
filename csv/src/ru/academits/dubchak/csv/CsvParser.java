@@ -1,10 +1,7 @@
 package ru.academits.dubchak.csv;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-//import org.apache.commons.csv.CSVRecord
 
 public class CsvParser {
     public static void main(String[] args) throws FileNotFoundException {
