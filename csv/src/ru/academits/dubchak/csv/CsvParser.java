@@ -12,7 +12,6 @@ public class CsvParser {
             throw new IllegalArgumentException("The number of arguments is not valid. " +
                     "There must be three arguments at least:" + args.length);
         }
-//        try (Scanner scanner = new Scanner(new FileInputStream(args[0]), "windows-1251");
         try (Scanner scanner = new Scanner(new FileInputStream(args[0]));
              PrintWriter writer = new PrintWriter("./csv/src/" + args[1])) {
             char delimiter = args[2].charAt(0);
@@ -30,8 +29,7 @@ public class CsvParser {
                 writer.print("<td>");
                 String string = scanner.nextLine();
                 for (int i = 0; i < string.length(); i++) {
-                    char character = string.charAt(i);
-                    if (character == '"') {
+                    if (string.charAt(i) == '"') {
                         inQuotes = true;
                         i++;
                         while (inQuotes) {
@@ -55,7 +53,7 @@ public class CsvParser {
                                 inQuotes = false;
                             }
                         }
-                    } else if (character == delimiter) {
+                    } else if (string.charAt(i) == delimiter) {
                         writer.print("</td><td>");
                         if (i == string.length() - 1) {
                             writer.println("</td></tr>");
