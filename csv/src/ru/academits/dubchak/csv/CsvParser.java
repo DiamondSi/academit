@@ -21,7 +21,7 @@ public class CsvParser {
                 writer.println("</head>");
                 writer.println("<body>");
                 writer.println("\t<table border=\"1\" cellspacing=\"0\">");
-                boolean inQuotes;
+                boolean inQuotes=false;
                 while (scanner.hasNextLine()) {
                     writer.print("\t\t<tr>");
                     writer.print("<td>");
