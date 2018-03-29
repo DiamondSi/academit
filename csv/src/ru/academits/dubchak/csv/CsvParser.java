@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class CsvParser {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         if (args.length < 3) {
             System.out.println("The number of arguments is not valid.\n" +
                     "There must be three arguments at least:\n" +
@@ -73,6 +73,8 @@ public class CsvParser {
                 writer.println("\t</table>");
                 writer.println("</body>");
                 writer.println("</html>");
+            } catch (FileNotFoundException e) {
+                System.out.printf("Input file %s not found. Try again.", args[0]);
             }
         }
     }
