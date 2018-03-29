@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class CsvParser {
-    public static void main(String[] args) {
+    public static void csvParser(String[] args) {
         if (args.length < 3) {
             System.out.println("The number of arguments is not valid.\n" +
                     "There must be three arguments at least:\n" +
