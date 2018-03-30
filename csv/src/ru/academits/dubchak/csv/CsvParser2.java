@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class CsvParser2 {
     public static void main(String[] args) {
+        CsvParser.csvParser(new String[]{"C:\\Users\\sbt-dubchak-da\\IdeaProjects\\academit\\csv\\src\\input.csv", "output.htm", ","});
         if (args.length < 3) {
             System.out.println("The number of arguments is not valid.\n" +
                     "There must be three arguments at least:\n" +
@@ -25,14 +26,13 @@ public class CsvParser2 {
                 writer.println("\t<table border=\"1\" cellspacing=\"0\">");
                 boolean inQuotes = false;
                 while (scanner.hasNextLine()) {
-                    writer.print("\t\t<tr>");
-                    writer.print("<td>");
+                    writer.print("\t\t<tr><td>");
                     String string = scanner.nextLine();
                     for (int i = 0; i < string.length(); i++) {
                         if (string.charAt(i) == '"') {
                             if ((i + 1) < string.length() && string.charAt(i + 1) == '"') {
                                 writer.print(string.charAt(i));
-                                i++;
+                                i += 2;
                             } else {
                                 inQuotes = !inQuotes;
                             }
@@ -41,7 +41,18 @@ public class CsvParser2 {
                                 writer.print(delimiter);
                             } else {
                                 writer.print("</td><td>");
+                                if (i == string.length() - 1) {
+                                    writer.println("</td></tr>");
+                                }
                             }
+                        } else if (i == string.length() - 1 && inQuotes) {
+                            writer.print(string.charAt(i));
+                            writer.print("<br/>");
+                            string = scanner.nextLine();
+                            i = -1;
+                        } else if (i == string.length() - 1 && !inQuotes) {
+                            writer.print(string.charAt(i));
+                            writer.println("</td></tr>");
                         } else {
                             writer.print(string.charAt(i));
                         }

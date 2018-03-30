@@ -21,7 +21,7 @@ public class CsvParser {
                 writer.println("</head>");
                 writer.println("<body>");
                 writer.println("\t<table border=\"1\" cellspacing=\"0\">");
-                boolean inQuotes=false;
+                boolean inQuotes = false;
                 while (scanner.hasNextLine()) {
                     writer.print("\t\t<tr>");
                     writer.print("<td>");
@@ -30,24 +30,26 @@ public class CsvParser {
                         if (string.charAt(i) == '"') {
                             inQuotes = true;
                             i++;
-                            if (inQuotes && i == string.length() - 1) {
-                                writer.println("</td></tr>");
-                                inQuotes = false;
-                            } else if (inQuotes && string.charAt(i) == '"' && string.charAt(i + 1) == '"') {
-                                writer.print(string.charAt(i + 1));
-                                i = i + 2;
-                            } else if (inQuotes && string.charAt(i) != '"') {
-                                while (string.charAt(i) != '"') {
-                                    writer.print(string.charAt(i));
-                                    i++;
-                                    if (i == string.length()) {
-                                        writer.print("<br/>");
-                                        string = scanner.nextLine();
-                                        i = 0;
+                            while (inQuotes) {
+                                if (i == string.length() - 1) {
+                                    writer.println("</td></tr>");
+                                    inQuotes = false;
+                                } else if (string.charAt(i) == '"' && string.charAt(i + 1) == '"') {
+                                    writer.print(string.charAt(i + 1));
+                                    i = i + 2;
+                                } else if (string.charAt(i) != '"') {
+                                    while (string.charAt(i) != '"') {
+                                        writer.print(string.charAt(i));
+                                        i++;
+                                        if (i == string.length()) {
+                                            writer.print("<br/>");
+                                            string = scanner.nextLine();
+                                            i = 0;
+                                        }
                                     }
+                                } else {
+                                    inQuotes = false;
                                 }
-                            } else {
-                                inQuotes = false;
                             }
                         } else if (string.charAt(i) == delimiter) {
                             writer.print("</td><td>");
