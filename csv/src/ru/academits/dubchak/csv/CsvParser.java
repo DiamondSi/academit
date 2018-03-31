@@ -66,7 +66,7 @@ public class CsvParser {
                 writer.println("</body>");
                 writer.println("</html>");
             } catch (FileNotFoundException e) {
-                System.out.printf("Input file %s not found. Try again.", args[0]);
+                System.out.printf("%s. Try again.", e);
             }
         }
     }
