@@ -1,10 +1,12 @@
 package ru.academits.dubchak.csv;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class CsvParser {
-    public static void csvParser(String[] args) {
+    public static void main(String[] args) {
         if (args.length < 3) {
             System.out.println("The number of arguments is not valid.\n" +
                     "There must be three arguments at least:\n" +
@@ -17,55 +19,45 @@ public class CsvParser {
                 writer.println("<html>");
                 writer.println("<head>");
                 writer.println("\t<meta charset=\"utf-8\" />");
-                writer.println("\t<title>HTML Document</title>");
+                writer.println("\t<title>HTML document converted from CSV</title>");
                 writer.println("</head>");
                 writer.println("<body>");
-                writer.println("\t<table border=\"1\" cellspacing=\"0\">");
+                writer.println("\t<table border=\"1\" cellspacing=\"0\" align=\"center\">");
                 boolean inQuotes = false;
                 while (scanner.hasNextLine()) {
-                    writer.print("\t\t<tr>");
-                    writer.print("<td>");
+                    writer.print("\t\t<tr><td>");
                     String string = scanner.nextLine();
                     for (int i = 0; i < string.length(); i++) {
-                        if (string.charAt(i) == '"') {
-                            inQuotes = true;
-                            i++;
-                            while (inQuotes) {
+                        if (inQuotes) {
+                            if (string.charAt(i) == '"') {
                                 if (i == string.length() - 1) {
                                     writer.println("</td></tr>");
                                     inQuotes = false;
-                                } else if (string.charAt(i) == '"' && string.charAt(i + 1) == '"') {
-                                    writer.print(string.charAt(i + 1));
-                                    i = i + 2;
-                                } else if (string.charAt(i) != '"') {
-                                    while (string.charAt(i) != '"') {
-                                        writer.print(string.charAt(i));
-                                        i++;
-                                        if (i == string.length()) {
-                                            writer.print("<br/>");
-                                            string = scanner.nextLine();
-                                            i = 0;
-                                        }
-                                    }
+                                } else if ((i + 1) < string.length() && string.charAt(i + 1) == '"') {
+                                    writer.print(printChar(string.charAt(i)));
+                                    i++;
                                 } else {
                                     inQuotes = false;
                                 }
+                            } else if (i == string.length() - 1) {
+                                writer.print(printChar(string.charAt(i)));
+                                writer.print("<br/>");
+                                string = scanner.nextLine();
+                                i = -1;
+                            } else {
+                                writer.print(printChar(string.charAt(i)));
                             }
+                        } else if (string.charAt(i) == '"') {
+                            inQuotes = true;
                         } else if (string.charAt(i) == delimiter) {
                             writer.print("</td><td>");
                             if (i == string.length() - 1) {
                                 writer.println("</td></tr>");
                             }
                         } else {
-                            while (string.charAt(i) != delimiter) {
-                                writer.print(string.charAt(i));
-                                if (i == string.length() - 1) {
-                                    writer.println("</td></tr>");
-                                    break;
-                                } else if (string.charAt(i + 1) == delimiter && i != string.length() - 1) {
-                                    break;
-                                }
-                                i++;
+                            writer.print(printChar(string.charAt(i)));
+                            if (i == string.length() - 1) {
+                                writer.println("</td></tr>");
                             }
                         }
                     }
@@ -76,6 +68,18 @@ public class CsvParser {
             } catch (FileNotFoundException e) {
                 System.out.printf("Input file %s not found. Try again.", args[0]);
             }
+        }
+    }
+    private static String printChar(char ch){
+        switch (ch){
+            case '<':
+                return ("&lt;");
+            case '>':
+                return ("&gt;");
+            case '&':
+                return ("&amp;");
+            default:
+                return String.valueOf(ch);
         }
     }
 }
