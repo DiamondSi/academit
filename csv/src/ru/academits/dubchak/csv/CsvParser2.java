@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class CsvParser2 {
     public static void main(String[] args) {
-        CsvParser.csvParser(new String[]{"C:\\Users\\sbt-dubchak-da\\IdeaProjects\\academit\\csv\\src\\input.csv", "output.htm", ","});
+        CsvParser.csvParser(new String[]{"C:\\Users\\neigh\\Documents\\academit\\csv\\src\\input.csv", "output.htm", ","});
         if (args.length < 3) {
             System.out.println("The number of arguments is not valid.\n" +
                     "There must be three arguments at least:\n" +
@@ -29,32 +29,37 @@ public class CsvParser2 {
                     writer.print("\t\t<tr><td>");
                     String string = scanner.nextLine();
                     for (int i = 0; i < string.length(); i++) {
-                        if (string.charAt(i) == '"') {
-                            if ((i + 1) < string.length() && string.charAt(i + 1) == '"') {
-                                writer.print(string.charAt(i));
-                                i += 2;
-                            } else {
-                                inQuotes = !inQuotes;
-                            }
-                        } else if (string.charAt(i) == delimiter) {
-                            if (inQuotes) {
-                                writer.print(delimiter);
-                            } else {
-                                writer.print("</td><td>");
+                        if (inQuotes) {
+                            if (string.charAt(i) == '"') {
                                 if (i == string.length() - 1) {
                                     writer.println("</td></tr>");
+                                    inQuotes = false;
+                                } else if ((i + 1) < string.length() && string.charAt(i + 1) == '"') {
+                                    writer.print(string.charAt(i));
+                                    i++;
+                                } else {
+                                    inQuotes = false;
                                 }
+                            } else if (i == string.length() - 1) {
+                                writer.print(string.charAt(i));
+                                writer.print("<br/>");
+                                string = scanner.nextLine();
+                                i = -1;
+                            } else {
+                                writer.print(string.charAt(i));
                             }
-                        } else if (i == string.length() - 1 && inQuotes) {
-                            writer.print(string.charAt(i));
-                            writer.print("<br/>");
-                            string = scanner.nextLine();
-                            i = -1;
-                        } else if (i == string.length() - 1 && !inQuotes) {
-                            writer.print(string.charAt(i));
-                            writer.println("</td></tr>");
+                        } else if (string.charAt(i) == '"') {
+                            inQuotes = true;
+                        } else if (string.charAt(i) == delimiter) {
+                            writer.print("</td><td>");
+                            if (i == string.length() - 1) {
+                                writer.println("</td></tr>");
+                            }
                         } else {
                             writer.print(string.charAt(i));
+                            if (i == string.length() - 1) {
+                                writer.println("</td></tr>");
+                            }
                         }
                     }
                 }
