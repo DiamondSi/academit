@@ -8,9 +8,8 @@ import java.util.Scanner;
 public class CsvParser {
     public static void main(String[] args) {
         if (args.length < 3) {
-            System.out.println("The number of arguments is not valid.\n" +
-                    "There must be three arguments at least:\n" +
-                    "input file name\noutput file name\ndelimiter");
+            System.out.println("The number of arguments is not valid. " +
+                    "There have to be three arguments at least: <input file name>, <output file name>, <delimiter>.");
         } else {
             try (Scanner scanner = new Scanner(new FileInputStream(args[0]));
                  PrintWriter writer = new PrintWriter("./csv/src/" + args[1])) {
