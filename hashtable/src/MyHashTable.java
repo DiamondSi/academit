@@ -1,11 +1,19 @@
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Spliterator;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class MyHashTable<T> implements Collection<T> {
+    private ArrayList<T> hashTable;
+
+    public MyHashTable(int capacity) {
+        this.hashTable = new ArrayList<>(capacity);
+    }
+
+    public MyHashTable() {
+        this(100);
+    }
+
     /**
      * Returns the number of elements in this collection.  If this collection
      * contains more than <tt>Integer.MAX_VALUE</tt> elements, returns
