@@ -6,11 +6,11 @@
       <module fileurl="file://$PROJECT_DIR$/arraylist/arraylist.iml" filepath="$PROJECT_DIR$/arraylist/arraylist.iml" />
       <module fileurl="file://$PROJECT_DIR$/csv/csv.iml" filepath="$PROJECT_DIR$/csv/csv.iml" />
       <module fileurl="file://$PROJECT_DIR$/generics/generics.iml" filepath="$PROJECT_DIR$/generics/generics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hashtable/hashtable.iml" filepath="$PROJECT_DIR$/hashtable/hashtable.iml" />
       <module fileurl="file://C:\Users\sbt-dubchak-da\IdeaProjects\academit\hashtable\hashtable.iml" filepath="C:\Users\sbt-dubchak-da\IdeaProjects\academit\hashtable\hashtable.iml" />
       <module fileurl="file://$PROJECT_DIR$/lambda/lambda.iml" filepath="$PROJECT_DIR$/lambda/lambda.iml" />
       <module fileurl="file://$PROJECT_DIR$/lists/lists.iml" filepath="$PROJECT_DIR$/lists/lists.iml" />
       <module fileurl="file://$PROJECT_DIR$/matrix/matrix.iml" filepath="$PROJECT_DIR$/matrix/matrix.iml" />
-      <module fileurl="file://$PROJECT_DIR$/myhashtable/myhashtable.iml" filepath="$PROJECT_DIR$/myhashtable/myhashtable.iml" />
       <module fileurl="file://$PROJECT_DIR$/range/range.iml" filepath="$PROJECT_DIR$/range/range.iml" />
       <module fileurl="file://$PROJECT_DIR$/shapes/shapes.iml" filepath="$PROJECT_DIR$/shapes/shapes.iml" />
       <module fileurl="file://$PROJECT_DIR$/singlylinkedlist/singlylinkedlist.iml" filepath="$PROJECT_DIR$/singlylinkedlist/singlylinkedlist.iml" />
