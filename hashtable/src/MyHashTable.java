@@ -13,7 +13,6 @@ public class MyHashTable<T> implements Collection<T> {
     public MyHashTable() {
         this(100);
     }
-
     /**
      * Returns the number of elements in this collection.  If this collection
      * contains more than <tt>Integer.MAX_VALUE</tt> elements, returns
