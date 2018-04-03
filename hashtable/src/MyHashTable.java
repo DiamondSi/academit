@@ -5,6 +5,7 @@ import java.util.stream.Stream;
 
 public class MyHashTable<T> implements Collection<T> {
     private ArrayList<T> hashTable;
+    private int size;
 
     public MyHashTable(int capacity) {
         this.hashTable = new ArrayList<>(capacity);
@@ -13,6 +14,7 @@ public class MyHashTable<T> implements Collection<T> {
     public MyHashTable() {
         this(100);
     }
+
     /**
      * Returns the number of elements in this collection.  If this collection
      * contains more than <tt>Integer.MAX_VALUE</tt> elements, returns
@@ -22,7 +24,7 @@ public class MyHashTable<T> implements Collection<T> {
      */
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     /**
@@ -32,7 +34,7 @@ public class MyHashTable<T> implements Collection<T> {
      */
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     /**
