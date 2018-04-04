@@ -37,6 +37,7 @@ public class MyHashTable<T> implements Collection<T> {
         return size == 0;
     }
 
+    //TODO
     /**
      * Returns <tt>true</tt> if this collection contains the specified element.
      * More formally, returns <tt>true</tt> if and only if this collection
@@ -58,6 +59,7 @@ public class MyHashTable<T> implements Collection<T> {
         return false;
     }
 
+    //TODO
     /**
      * Returns an iterator over the elements in this collection.  There are no
      * guarantees concerning the order in which the elements are returned
@@ -71,6 +73,7 @@ public class MyHashTable<T> implements Collection<T> {
         return null;
     }
 
+    //TODO
     /**
      * Performs the given action for each element of the {@code Iterable}
      * until all elements have been processed or the action throws an
@@ -93,6 +96,7 @@ public class MyHashTable<T> implements Collection<T> {
 
     }
 
+    //TODO
     /**
      * Returns an array containing all of the elements in this collection.
      * If this collection makes any guarantees as to what order its elements
@@ -114,6 +118,7 @@ public class MyHashTable<T> implements Collection<T> {
         return new Object[0];
     }
 
+    //TODO
     /**
      * Returns an array containing all of the elements in this collection;
      * the runtime type of the returned array is that of the specified array.
@@ -161,6 +166,7 @@ public class MyHashTable<T> implements Collection<T> {
         return null;
     }
 
+    //TODO
     /**
      * Ensures that this collection contains the specified element (optional
      * operation).  Returns <tt>true</tt> if this collection changed as a
@@ -199,6 +205,7 @@ public class MyHashTable<T> implements Collection<T> {
         return false;
     }
 
+    //TODO
     /**
      * Removes a single instance of the specified element from this
      * collection, if it is present (optional operation).  More formally,
@@ -224,6 +231,7 @@ public class MyHashTable<T> implements Collection<T> {
         return false;
     }
 
+    //TODO
     /**
      * Returns <tt>true</tt> if this collection contains all of the elements
      * in the specified collection.
@@ -247,6 +255,7 @@ public class MyHashTable<T> implements Collection<T> {
         return false;
     }
 
+    //TODO
     /**
      * Adds all of the elements in the specified collection to this collection
      * (optional operation).  The behavior of this operation is undefined if
@@ -276,6 +285,7 @@ public class MyHashTable<T> implements Collection<T> {
         return false;
     }
 
+    //TODO
     /**
      * Removes all of this collection's elements that are also contained in the
      * specified collection (optional operation).  After this call returns,
@@ -304,6 +314,7 @@ public class MyHashTable<T> implements Collection<T> {
         return false;
     }
 
+    //TODO
     /**
      * Removes all of the elements of this collection that satisfy the given
      * predicate.  Errors or runtime exceptions thrown during iteration or by
@@ -329,6 +340,7 @@ public class MyHashTable<T> implements Collection<T> {
         return false;
     }
 
+    //TODO
     /**
      * Retains only the elements in this collection that are contained in the
      * specified collection (optional operation).  In other words, removes from
@@ -356,6 +368,7 @@ public class MyHashTable<T> implements Collection<T> {
         return false;
     }
 
+    //TODO
     /**
      * Removes all of the elements from this collection (optional operation).
      * The collection will be empty after this method returns.
@@ -368,6 +381,7 @@ public class MyHashTable<T> implements Collection<T> {
 
     }
 
+    //TODO
     /**
      * Creates a {@link Spliterator} over the elements in this collection.
      * <p>
@@ -419,6 +433,7 @@ public class MyHashTable<T> implements Collection<T> {
         return null;
     }
 
+    //TODO
     /**
      * Returns a sequential {@code Stream} with this collection as its source.
      * <p>
@@ -437,6 +452,7 @@ public class MyHashTable<T> implements Collection<T> {
         return null;
     }
 
+    //TODO
     /**
      * Returns a possibly parallel {@code Stream} with this collection as its
      * source.  It is allowable for this method to return a sequential stream.
