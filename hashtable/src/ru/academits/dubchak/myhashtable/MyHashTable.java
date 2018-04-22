@@ -1,3 +1,4 @@
+package ru.academits.dubchak.myhashtable;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
