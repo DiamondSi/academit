@@ -14,8 +14,10 @@ public class Main {
         personList.add(new Person("Olya", 23));
         personList.add(new Person("Misha", 8));
         personList.add(new Person("Dan", 4));
+        personList.add(new Person("Anna", 30));
+        personList.add(new Person("Anna", 20));
         Stream<Person> stream = personList.stream();
-        System.out.println("Names: " + stream.map(x -> x.getName()).distinct().collect(Collectors.joining(",")));
+//        System.out.println("Names: " + stream.map(x -> x.getName()).distinct().collect(Collectors.joining(",")));
         System.out.println("Average age less than 18: " + stream.filter(age -> age.getAge() < 18).mapToInt(x -> x.getAge()).average());
     }
 }
